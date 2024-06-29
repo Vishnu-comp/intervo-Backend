@@ -1,4 +1,3 @@
-// controllers/authController.js
 import asyncHandler from 'express-async-handler';
 import User from '../models/User.js';
 import generateToken from '../utils/generateToken.js';
@@ -30,6 +29,7 @@ const registerUser = asyncHandler(async (req, res) => {
       name: user.name,
       username: user.username,
       email: user.email,
+      companyName: user.companyName, // Return companyName
       token: generateToken(user._id),
     });
   } else {
@@ -52,6 +52,7 @@ const authUser = asyncHandler(async (req, res) => {
       name: user.name,
       username: user.username,
       email: user.email,
+      companyName: user.companyName, // Return companyName
       token: generateToken(user._id),
     });
   } else {
@@ -61,3 +62,4 @@ const authUser = asyncHandler(async (req, res) => {
 });
 
 export { registerUser, authUser };
+  

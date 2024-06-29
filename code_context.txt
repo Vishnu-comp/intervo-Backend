@@ -27,7 +27,7 @@ import generateToken from '../utils/generateToken.js';
 // @route   POST /api/account/signup
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, companyType, username, email, password } = req.body;
+  const { companyName, companyType, username, email, password } = req.body;
 
   const userExists = await User.findOne({ email });
 
@@ -37,7 +37,7 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 
   const user = await User.create({
-    name,
+    companyName,
     companyType,
     username,
     email,
@@ -131,7 +131,7 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 const userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  companyName: { type: String, required: true },
   companyType: { type: String, required: true },
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
@@ -222,7 +222,3 @@ router.post('/interviewBatch', upload.single('csvFile'), async (req, res) => {
 
 export default router;
 
-// File:# .env   
-PORT=3000
-MONGODB_URI="mongodb+srv://nameunknown631:V91TxLbV6RbG3w2b@cluster0.8e5wpse.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-JWT_SECRET="rrt543efdgtreft6rtr6"
