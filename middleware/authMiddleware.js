@@ -1,23 +1,34 @@
 // middleware/authMiddleware.js
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
+import InterviewBatch from '../models/InterviewBatch.js';
 
-const protect = async (req, res, next) => {
-  let token;
+const authMiddleware = async (req, res, next) => {
+  const token = req.header('Authorization');
 
-  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-    try {
-      token = req.headers.authorization.split(' ')[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = await User.findById(decoded.id).select('-password');
+  if (!token) {
+    return res.status(401).json({ message: 'Authorization token required' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id).select('-password');
+    req.user = user;
+
+    // Check if user has necessary permissions
+    if (user.role === 'admin') {
+      // Admin can fetch all interview batches
       next();
-    } catch (error) {
-      console.error('Not authorized, token failed', error);
-      res.status(401).json({ message: 'Not authorized, token failed' });
+    } else {
+      // Non-admin user can fetch interview batches associated with their company
+      const interviewBatches = await InterviewBatch.find({ companyName: user.companyName });
+      req.interviewBatches = interviewBatches;
+      next();
     }
-  } else {
-    res.status(401).json({ message: 'Not authorized, no token' });
+  } catch (error) {
+    console.error('Authentication error:', error);
+    res.status(401).json({ message: 'Token is not valid' });
   }
 };
 
-export { protect };
+export default authMiddleware;
