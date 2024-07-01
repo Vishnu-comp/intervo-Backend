@@ -7,6 +7,7 @@ import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import interviewBatchRoutes from './routes/interviewBatchRoutes.js';
 import getInterviewBatchRoutes from './routes/getInterviewBatchRoutes.js';
+import meetingRouter from './routes/meetingRoutes.js';
 
 dotenv.config();
 connectDB();
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use('/api/account', authRoutes);
 app.use('/api', interviewBatchRoutes);
 app.use('/api', getInterviewBatchRoutes);
+app.use('/meeting', meetingRouter)
 
 // Error handling middleware
 app.use((err, req, res, next) => {
