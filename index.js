@@ -1,13 +1,12 @@
-// index.js
 import express from 'express';
-import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import cors from 'cors';
 import connectDB from './config/db.js';
+import cors from 'cors';
 import authRoutes from './routes/authRoutes.js';
 import interviewBatchRoutes from './routes/interviewBatchRoutes.js';
 import getInterviewBatchRoutes from './routes/getInterviewBatchRoutes.js';
 import meetingRouter from './routes/meetingRoutes.js';
+import sendEmailsRoute from './routes/sendEmails.js';
 
 dotenv.config();
 connectDB();
@@ -21,9 +20,9 @@ app.use(express.json());
 app.use('/api/account', authRoutes);
 app.use('/api', interviewBatchRoutes);
 app.use('/api', getInterviewBatchRoutes);
-app.use('/meeting', meetingRouter)
+app.use('/meeting', meetingRouter);
+app.use('/api', sendEmailsRoute);
 
-// Error handling middleware
 app.use((err, req, res, next) => {
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
   res.status(statusCode);

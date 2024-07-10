@@ -18,7 +18,6 @@ const connectDB = async () => {
 export default connectDB;
 
 // File: controllers/authController.js
-// controllers/authController.js
 import asyncHandler from 'express-async-handler';
 import User from '../models/User.js';
 import generateToken from '../utils/generateToken.js';
@@ -50,6 +49,7 @@ const registerUser = asyncHandler(async (req, res) => {
       name: user.name,
       username: user.username,
       email: user.email,
+      companyName: user.companyName, // Return companyName
       token: generateToken(user._id),
     });
   } else {
@@ -72,6 +72,7 @@ const authUser = asyncHandler(async (req, res) => {
       name: user.name,
       username: user.username,
       email: user.email,
+      companyName: user.companyName, // Return companyName
       token: generateToken(user._id),
     });
   } else {
@@ -81,31 +82,80 @@ const authUser = asyncHandler(async (req, res) => {
 });
 
 export { registerUser, authUser };
+  
+// File: controllers/interviewBatchController.js
+import asyncHandler from 'express-async-handler';
+import InterviewBatch from '../models/InterviewBatch.js';
+
+// @desc    Create a new interview batch
+// @route   POST /api/interviewBatch
+// @access  Private (requires authorization)
+const createInterviewBatch = asyncHandler(async (req, res) => {
+  // Extract form data
+  const {
+    companyName,
+    totalCandidatesRequired,
+    domains,
+    skills,
+    interviewTypes,
+    deadline,
+    csvFile,
+  } = req.body;
+
+  // Create new InterviewBatch instance
+  const interviewBatch = new InterviewBatch({
+    companyName,
+    totalCandidatesRequired,
+    domains,
+    skills,
+    interviewTypes,
+    deadline,
+    csvFile,
+  });
+
+  // Save interview batch to database
+  const createdBatch = await interviewBatch.save();
+
+  res.status(201).json(createdBatch);
+});
+
+export { createInterviewBatch };
 
 // File: middleware/authMiddleware.js
 // middleware/authMiddleware.js
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
+import InterviewBatch from '../models/InterviewBatch.js';
 
-const protect = async (req, res, next) => {
-  let token;
+const authMiddleware = async (req, res, next) => {
+  const token = req.header('Authorization');
 
-  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-    try {
-      token = req.headers.authorization.split(' ')[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = await User.findById(decoded.id).select('-password');
+  if (!token) {
+    return res.status(401).json({ message: 'Authorization token required' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id).select('-password');
+    req.user = user;
+
+    // Check if user has necessary permissions
+    if (user.role === 'admin') {
+      // Admin can fetch all interview batches
       next();
-    } catch (error) {
-      console.error('Not authorized, token failed', error);
-      res.status(401).json({ message: 'Not authorized, token failed' });
+    } else {
+      // Non-admin user can fetch interview batches associated with their company
+      const interviewBatches = await InterviewBatch.find({ companyName: user.companyName });
+      req.interviewBatches = interviewBatches;
+      next();
     }
-  } else {
-    res.status(401).json({ message: 'Not authorized, no token' });
+  } catch (error) {
+    console.error('Authentication error:', error);
+    res.status(401).json({ message: 'Token is not valid' });
   }
 };
 
-export { protect };
+export default authMiddleware;
 
 // File: models/InterviewBatch.js
 // models/interviewBatchSchema.js
@@ -170,16 +220,18 @@ router.post('/signin', authUser);
 export default router;
 
 // File: routes/getInterviewBatchRoutes.js
-// routes/getInterviewBatchRoutes.js
 import express from 'express';
 import InterviewBatch from '../models/InterviewBatch.js';
+import authMiddleware from '../middleware/authMiddleware.js'; // Assuming you have authentication middleware
 
 const router = express.Router();
 
-// Fetch all interview batches
-router.get('/interviewBatch', async (req, res) => {
+// Fetch interview batches for logged-in user's company
+router.get('/interviewBatch', authMiddleware, async (req, res) => {
+  const companyName = req.user.companyName; // Assuming company name is stored in req.user
+
   try {
-    const interviewBatches = await InterviewBatch.find();
+    const interviewBatches = await InterviewBatch.find({ companyName });
     res.status(200).json(interviewBatches);
   } catch (error) {
     console.error('Error fetching interview batches:', error);
@@ -217,6 +269,89 @@ router.post('/interviewBatch', upload.single('csvFile'), async (req, res) => {
   } catch (error) {
     console.error('Error creating interview batch:', error);
     res.status(400).json({ message: error.message });
+  }
+});
+
+export default router;
+
+// File: routes/meetingRoutes.js
+import express from 'express';
+import jwt from 'jsonwebtoken';
+
+const router = express.Router();
+
+router.post('/getAuthKey', (req, res) => {
+  try {
+    const API_KEY = '76b0317a-7d29-4823-8694-351b513fb296';
+    const SECRET = '24c366883381e5d923d60d24689057102e826bb14ed742f69f0a95d8a5acb1df';
+
+    const options = {
+      expiresIn: '120m',
+      algorithm: 'HS256'
+    };
+    const payload = {
+      apikey: API_KEY,
+      permissions: [`allow_join`], // `ask_join` || `allow_mod`
+      // version: 2, //OPTIONAL
+      // roomId: `2kyv-gzay-64pg`, //OPTIONAL
+      // participantId: `lxvdplwt`, //OPTIONAL
+      // roles: ['crawler', 'rtc'], //OPTIONAL
+    };
+
+    const token = jwt.sign(payload, SECRET, options);
+    console.log(token);
+    res.status(201).send(token);
+
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+export default router;
+
+// File: routes/sendEmails.js
+import express from 'express';
+import nodemailer from 'nodemailer';
+import User from '../models/User.js';
+
+const router = express.Router();
+
+router.post('/', async (req, res) => {
+  const { emails } = req.body;
+
+  try {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USERNAME,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+    });
+
+    const promises = emails.map(async (email) => {
+      const randomPassword = Math.random().toString(36).slice(-8);
+
+      const newUser = new User({
+        email,
+        password: randomPassword,
+      });
+
+      await newUser.save();
+
+      await transporter.sendMail({
+        from: process.env.EMAIL_USERNAME,
+        to: email,
+        subject: 'Your Account Credentials',
+        text: `Your email: ${email}\nYour password: ${randomPassword}`,
+      });
+    });
+
+    await Promise.all(promises);
+
+    res.status(200).json({ message: 'Emails sent and users created successfully' });
+  } catch (error) {
+    console.error('Error sending emails and creating users:', error);
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 
