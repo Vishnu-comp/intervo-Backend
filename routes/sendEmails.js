@@ -5,7 +5,7 @@ import User from '../models/User.js';
 const router = express.Router();
 
 router.post('/sendEmails', async (req, res) => {
-  const { emails, companyType, companyName } = req.body;
+  const { emails, companyName, domain } = req.body;
 
   try {
     // Set up Nodemailer transporter with Gmail and app-specific password
@@ -29,8 +29,8 @@ router.post('/sendEmails', async (req, res) => {
         email: emailEntry.email,
         password: randomPassword,
         username: emailEntry.email, // Use email as username
-        companyType,
         companyName,
+        domain,
       });
 
       await newUser.save();
@@ -39,7 +39,7 @@ router.post('/sendEmails', async (req, res) => {
         from: process.env.EMAIL_USERNAME,
         to: emailEntry.email,
         subject: 'Your Account Credentials',
-        text: `Your email: ${emailEntry.email}\nYour password: ${randomPassword}`,
+        text: `Your email: ${emailEntry.email}\nYour password: ${randomPassword}\nCompany Name: ${companyName}\nDomain: ${emailEntry.domain}`,
       });
     });
 
