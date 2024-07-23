@@ -6,6 +6,7 @@ import authRoutes from './routes/authRoutes.js';
 import interviewBatchRoutes from './routes/interviewBatchRoutes.js';
 import getInterviewBatchRoutes from './routes/getInterviewBatchRoutes.js';
 import meetingRouter from './routes/meetingRoutes.js';
+import interviewerRouter from './routes/interviewerAuth.js';
 import sendEmailsRoute from './routes/sendEmails.js';
 import storeCandidatesRoute from './routes/storeCandidates.js';
 
@@ -21,9 +22,12 @@ app.use(express.json());
 app.use('/api/account', authRoutes);
 app.use('/api', interviewBatchRoutes);
 app.use('/api', getInterviewBatchRoutes);
-app.use('/meeting', meetingRouter);
 app.use('/api', sendEmailsRoute);
 app.use('/api', storeCandidatesRoute);
+
+// Aarav's routes
+app.use('/meeting', meetingRouter);
+app.use('/interviewer', interviewerRouter);
 
 app.use((err, req, res, next) => {
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
