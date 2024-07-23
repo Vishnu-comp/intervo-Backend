@@ -9,6 +9,7 @@ import meetingRouter from './routes/meetingRoutes.js';
 import interviewerRouter from './routes/interviewerAuth.js';
 import sendEmailsRoute from './routes/sendEmails.js';
 import storeCandidatesRoute from './routes/storeCandidates.js';
+import userLogin from './routes/userLogin.js'
 
 dotenv.config();
 connectDB();
@@ -24,6 +25,7 @@ app.use('/api', interviewBatchRoutes);
 app.use('/api', getInterviewBatchRoutes);
 app.use('/api', sendEmailsRoute);
 app.use('/api', storeCandidatesRoute);
+app.use('/candidate',userLogin)
 
 // Aarav's routes
 app.use('/meeting', meetingRouter);
