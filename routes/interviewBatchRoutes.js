@@ -17,7 +17,8 @@ router.post('/interviewBatch', upload.single('csvFile'), async (req, res) => {
       skills: JSON.parse(req.body.skills),
       interviewTypes: JSON.parse(req.body.interviewTypes),
       deadline: req.body.deadline,
-      csvFile: req.file.buffer.toString('base64')
+      csvFile: req.file.buffer.toString('base64'),
+      note: req.body.note,
     });
 
     await interviewBatch.save();

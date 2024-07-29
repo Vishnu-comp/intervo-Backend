@@ -9,6 +9,7 @@ const interviewBatchSchema = new mongoose.Schema({
   interviewTypes: { type: [String], required: true },
   deadline: { type: Date, required: true },
   csvFile: { type: String, required: true },
+  note: { type: String, required: true },
 }, {
   timestamps: true,
 });
