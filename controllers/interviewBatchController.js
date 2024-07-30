@@ -14,6 +14,7 @@ const createInterviewBatch = asyncHandler(async (req, res) => {
     interviewTypes,
     deadline,
     csvFile,
+    note,
   } = req.body;
 
   // Create new InterviewBatch instance
@@ -25,6 +26,7 @@ const createInterviewBatch = asyncHandler(async (req, res) => {
     interviewTypes,
     deadline,
     csvFile,
+    note,
   });
 
   // Save interview batch to database
