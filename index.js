@@ -26,9 +26,8 @@ const __dirname = dirname(__filename);
 app.use(cors());
 app.use(express.json());
 
-// Middleware to serve static files from 'uploads/csv' directory
+// Vishnu's routes
 app.use('/api/uploads/csv', express.static(path.join(__dirname, 'uploads', 'csv')));
-
 app.use('/api/account', authRoutes);
 app.use('/api', interviewBatchRoutes);
 app.use('/api', getInterviewBatchRoutes);
