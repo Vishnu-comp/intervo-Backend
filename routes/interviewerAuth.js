@@ -1,19 +1,9 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
 import jwt from 'jsonwebtoken';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';  // Import the fileURLToPath function from the url module
-import { dirname } from 'path';  // Import the dirname function from the path module
-
-const __filename = fileURLToPath(import.meta.url);  // Define __filename
-const __dirname = dirname(__filename); 
-
+import InterviewerOtp from '../models/InterviewerOtp.js';
+import Interviewer from '../models/Interviewer.js';
 const router = express.Router();
-
-const imageToBase64 = (filePath) => {
-  return fs.readFileSync(filePath, { encoding: 'base64' });
-};
 
 router.post('/sendOtp', async (req, res) => {
   const { email, name } = req.body;
@@ -27,42 +17,33 @@ router.post('/sendOtp', async (req, res) => {
       },
     });
 
-    const otp = Math.random().toString(36).slice(-8);
-
-    // Simulating user creation (replace with actual logic)
-    // const newUser = new User({
-    //   email,
-    //   password: otp, 
-    //   username: email,
-    //   companyName: 'Your Company',
-    //   domain: 'example.com',
-    // });
-
-    // await newUser.save();
-
-    const logoPath = path.join(__dirname, '../assets/logo-white.png');
-    const base64Logo = imageToBase64(logoPath);
+    const randomNumber = Math.floor(Math.random() * 1000000);
+    const otp = String(randomNumber).padStart(6, '0');
 
     const htmlContent = `
-      <div style="font-family: Arial, sans-serif; font-size: 16px; color: #333;">
+      <div style="font-family: Arial, sans-serif; font-size: 16px; color: #fff;">
         <p>Hello ${name},</p>
-        <p>Thank you for being part of Your Company. Here are your account details:</p>
+        <p>Your Otp to register as an Interviewer on Intervo.</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>One-Time Password (OTP):</strong> ${otp}</p>
         <p>Please use the OTP to verify your email and complete the setup.</p>
-        <p>Best regards,<br>Your Company Team</p>
-        <div style="text-align: center; margin-top: 20px;">
-          <img src="data:image/png;base64,${base64Logo}" alt="Your Company Logo" style="max-width: 150px;">
-        </div>
+        <p>Best regards,<br>Intervo</p>
       </div>
     `;
 
     await transporter.sendMail({
       from: process.env.EMAIL_USERNAME,
       to: email,
-      subject: 'Your OTP for Intervo Login',
+      subject: 'Your OTP for Intervo Registration',
       html: htmlContent,
     });
+
+    if (await InterviewerOtp.findOne({ email })) {
+      await InterviewerOtp.findOneAndUpdate({ email },
+        { otp, createdAt: new Date() });
+    } else {
+      await new InterviewerOtp({ email, otp }).save();
+    }
 
     res.status(200).json({ message: 'Email sent and user created successfully' });
   } catch (error) {
@@ -70,5 +51,79 @@ router.post('/sendOtp', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+router.post('/verifyOtp', async (req, res) => {
+  const { email, otp } = req.body;
+
+  try {
+    const Otp = await InterviewerOtp.findOne({ email, otp });
+    if (!Otp) {
+      return res.status(400).json({ message: 'Invalid OTP' });
+    }
+    return res.status(200).json({ message: 'OTP verified successfully' });
+
+  } catch (error) {
+    console.error('Error verifying OTP:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+})
+
+router.post('/register', async (req, res) => {
+  const { email, name, domains, exp, timeFrom, timeTo, password, days } = req.body;
+
+  try {
+    console.log("ZXCV");
+    console.log(req.body);
+    const interviewer = await new Interviewer({ email, name, domains, exp, timeFrom, timeTo, password, days }).save();
+    res.status(201).json({ message: 'Interviewer registered successfully' });
+  } catch (error) {
+    console.error('Error registering interviewer:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const interviewer = await Interviewer.findOne({ email, password });
+    if (!interviewer) {
+      return res.status(400).json({ message: 'Invalid email or password' });
+    }
+    let token = jwt.sign(interviewer.toObject(), process.env.JWT_SECRET);
+    return res.status(200).json({ message: 'Login successful', interviewer, token });
+
+  } catch (error) {
+    console.error('Error logging in:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+router.post("/getPreferences", async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    let interviewer = await Interviewer.findOne({ email });
+    delete interviewer.password;
+    delete interviewer._id;
+    return res.status(200).json(interviewer);
+  } catch (error) {
+    console.error('Error getting interviewer:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+router.post("/updatePreferences", async (req, res) => {
+  const { email, domains, exp, timeFrom, timeTo, days } = req.body;
+
+  try {
+    let interviewer = await Interviewer.findOneAndUpdate({ email }, { domains, exp, timeFrom, timeTo, days });
+    return res.status(200).json({ message: 'Preferences updated successfully' });
+  } catch (error) {
+    console.error('Error updating interviewer:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
+);
 
 export default router;
