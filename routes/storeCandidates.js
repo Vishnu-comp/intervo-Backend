@@ -44,13 +44,14 @@ router.post('/storeCandidates', async (req, res) => {
     const promises = validCandidates.map(async (candidate) => {
       const randomPassword = Math.random().toString(36).slice(-8);
 
+      // Save candidate to the database
       const newCandidate = new Candidate({
         srNo: candidate.srNo,
         email: candidate.email,
         name: candidate.name,
         companyName,
         experience: candidate.experience,
-        domain: candidate.domain,
+        domain: candidate.domain, // Ensure 'domain' is included in the model
         sex: candidate.sex,
         username: candidate.email, // Use email as username
         password: randomPassword,
@@ -58,11 +59,12 @@ router.post('/storeCandidates', async (req, res) => {
 
       await newCandidate.save();
 
+      // Send email to candidate
       await transporter.sendMail({
         from: process.env.EMAIL_USERNAME,
         to: candidate.email,
         subject: 'Your Account Credentials',
-        text: `Your email: ${candidate.email}\nYour password: ${randomPassword}\nCompany Name: ${companyName}`,
+        text: `Your email: ${candidate.email}\nYour password: ${randomPassword}\nCompany Name: ${companyName}\nDomain: ${candidate.domain || 'Not specified'}`, // Include domain in the email
       });
     });
 
