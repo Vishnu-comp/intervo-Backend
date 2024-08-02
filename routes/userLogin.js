@@ -1,8 +1,15 @@
 import express from 'express';
 import Candidate from '../models/Candidate.js';
 import jwt from 'jsonwebtoken';
+import multer from 'multer';
+import AptitudeUser from '../models/AptitudeUser.js';
 import CandidateMiddleware from '../middleware/CandidateMiddleware.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
 const router = express.Router();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Replace 'your_jwt_secret' with your actual JWT secret key
 const JWT_SECRET = process.env.JWT_SECRET || 'rrt543efdgtreft6rtr6';
@@ -68,8 +75,10 @@ router.get('/interviews', CandidateMiddleware, async (req, res) => {
     const interviews = [
       {
         id: 1,
-        name: `${candidate.username}`,
+        name: `${candidate.name}`,
         title: `${candidate.domain}`,
+        email:`${candidate.email}`,
+        comany:`${candidate.companyName}`,
         description: `Valid Till: ${validityDate.toISOString().split('T')[0]}`, // Format as YYYY-MM-DD
         imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWW9_d3hUdxBZ5W_Ltnlm7hD8fR-3jhvpAYg&s', // Placeholder image
       },
@@ -97,11 +106,129 @@ const questions = [
   // Add more questions as needed
 ];
 
+
 // Get test questions
 router.get('/test/questions', (req, res) => {
   res.json(questions);
 });
 
+
+const upload = multer({
+  dest: 'uploads/', // Directory where files will be saved
+  limits: {
+      fileSize: 5 * 1024 * 1024, // 5 MB size limit
+  },
+  fileFilter: (req, file, cb) => {
+      // Filter to accept only jpg/jpeg/png files
+      if (!file.mimetype.match(/\/(jpg|jpeg|png)$/)) {
+          return cb(new Error('File type not allowed'), false);
+      }
+      cb(null, true);
+  },
+});
+
+// Route to register a new user
+router.post('/register', async (req, res) => {
+  const { name, email } = req.body;
+  try {
+      const user = new AptitudeUser({ name, email });
+      await user.save();
+      res.status(201).send({ message: 'User registered successfully', user });
+  } catch (error) {
+      res.status(500).send({ message: 'Error registering user', error });
+  }
+});
+
+// Route to upload face image
+
+router.post('/uploadface', async (req, res) => {
+  try {
+      const { email, faceImage } = req.body; // Extract email and faceImage from request body
+      
+      if (!faceImage) {
+          return res.status(400).send({ message: 'No image data provided' });
+      }
+
+      // Find user by email
+      const user = await AptitudeUser.findOne({ email: email });
+      if (!user) {
+          return res.status(404).send({ message: 'User not found' });
+      }
+
+      // Convert Data URL to file
+      const base64Data = faceImage.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
+      const buffer = Buffer.from(base64Data, 'base64');
+      const uploadDir = path.join(__dirname, './Faceuploads');
+      const filePath = path.join(uploadDir, `${email}-faceImage.png`); // File name can be adjusted
+
+      // Ensure the uploads directory exists
+      if (!fs.existsSync(uploadDir)) {
+          fs.mkdirSync(uploadDir, { recursive: true });
+      }
+
+      // Save the image file
+      fs.writeFile(filePath, buffer, async (err) => {
+          if (err) {
+              console.error('Error saving image:', err);
+              return res.status(500).send({ message: 'Failed to save image' });
+          }
+
+          // Update user with the new image path
+          user.faceImage = filePath;
+          await user.save();
+
+          res.status(200).send({ message: 'Face image uploaded successfully', faceImage: filePath });
+      });
+  } catch (error) {
+      console.error('Error uploading face image:', error);
+      res.status(500).send({ message: 'Error uploading face image', error });
+  }
+});
+// Route to upload ID card image
+// Route to handle ID card image upload from Data URL
+router.post('/upload-idcard', async (req, res) => {
+  try {
+      const { email, idCardImage } = req.body; // Extract email and idCardImage from request body
+      
+      if (!idCardImage) {
+          return res.status(400).send({ message: 'No image data provided' });
+      }
+
+      // Find user by email
+      const user = await AptitudeUser.findOne({ email: email });
+      if (!user) {
+          return res.status(404).send({ message: 'User not found' });
+      }
+
+      // Convert Data URL to file
+    const base64Data = idCardImage.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
+      const buffer = Buffer.from(base64Data, 'base64');
+      const uploadDir = path.join(__dirname, './Identityuploads');
+      const filePath = path.join(uploadDir, `${email}-idCardImage.png`); // File name can be adjusted
+
+      // Ensure the uploads directory exists
+      if (!fs.existsSync(uploadDir)) {
+          fs.mkdirSync(uploadDir, { recursive: true });
+      }
+
+      // Save the image file
+      fs.writeFile(filePath, buffer, async (err) => {
+          if (err) {
+              console.error('Error saving image:', err);
+              return res.status(500).send({ message: 'Failed to save image' });
+          }
+
+          // Update user with the new image path
+          user.idCardImage = filePath;
+          await user.save();
+
+          res.status(200).send({ message: 'ID card image uploaded successfully', idCardImage: filePath });
+      });
+  } catch (error) {
+      console.error('Error uploading ID card image:', error);
+      res.status(500).send({ message: 'Error uploading ID card image', error });
+  }
+});
 
 
 export default router;
