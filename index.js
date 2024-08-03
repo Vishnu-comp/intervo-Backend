@@ -9,6 +9,7 @@ import meetingRouter from './routes/meetingRoutes.js';
 import interviewerRouter from './routes/interviewerAuth.js';
 import sendEmailsRoute from './routes/sendEmails.js';
 import storeCandidatesRoute from './routes/storeCandidates.js';
+import interviewerBatchRoutes from './routes/interviewerBatchRoutes.js';
 import userLogin from './routes/userLogin.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -38,6 +39,7 @@ app.use('/candidate', userLogin);
 // Aarav's routes
 app.use('/meeting', meetingRouter);
 app.use('/interviewer', interviewerRouter);
+app.use('/batches', interviewerBatchRoutes);
 
 app.use((err, req, res, next) => {
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
