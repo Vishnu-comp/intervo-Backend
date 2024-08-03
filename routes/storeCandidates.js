@@ -1,6 +1,7 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
 import Candidate from '../models/Candidate.js';
+import InterviewBatch from '../models/InterviewBatch.js';
 
 const router = express.Router();
 
@@ -12,7 +13,7 @@ const removeBOM = (str) => {
 };
 
 router.post('/storeCandidates', async (req, res) => {
-  const { candidates, companyName } = req.body;
+  const { candidates, companyName, batchId } = req.body;
 
   try {
     // Clean BOM from candidate keys
@@ -51,7 +52,7 @@ router.post('/storeCandidates', async (req, res) => {
         name: candidate.name,
         companyName,
         experience: candidate.experience,
-        domain: candidate.domain, // Ensure 'domain' is included in the model
+        domain: candidate.domain,
         sex: candidate.sex,
         username: candidate.email, // Use email as username
         password: randomPassword,
@@ -66,11 +67,17 @@ router.post('/storeCandidates', async (req, res) => {
         subject: 'Your Account Credentials',
         text: `Your email: ${candidate.email}\nYour password: ${randomPassword}\nCompany Name: ${companyName}\nDomain: ${candidate.domain || 'Not specified'}`, // Include domain in the email
       });
+
+      // Update InterviewBatch with candidate
+      await InterviewBatch.updateOne(
+        { batchId },
+        { $push: { candidates: { email: candidate.email, testScore: 0, interviewScore: 0 } } }
+      );
     });
 
     await Promise.all(promises);
 
-    res.status(200).json({ message: 'Candidates stored and emails sent successfully' });
+    res.status(200).json({ message: 'Candidates stored, emails sent, and interview batch updated successfully' });
   } catch (error) {
     console.error('Error storing candidates and sending emails:', error);
     res.status(500).json({ message: 'Internal server error' });
