@@ -2,6 +2,7 @@
 import mongoose from 'mongoose';
 
 const interviewBatchSchema = new mongoose.Schema({
+  batchId: { type: String, required: true, unique: true },
   companyName: { type: String, required: true },
   totalCandidatesRequired: { type: Number, required: true },
   domains: { type: String, required: true },
