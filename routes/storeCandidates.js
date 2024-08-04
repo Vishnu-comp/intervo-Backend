@@ -1,3 +1,4 @@
+// routes/candidateRoutes.js
 import express from 'express';
 import nodemailer from 'nodemailer';
 import Candidate from '../models/Candidate.js';
@@ -45,7 +46,7 @@ router.post('/storeCandidates', async (req, res) => {
     const promises = validCandidates.map(async (candidate) => {
       const randomPassword = Math.random().toString(36).slice(-8);
 
-      // Save candidate to the database
+      // Save candidate to the database with batchId
       const newCandidate = new Candidate({
         srNo: candidate.srNo,
         email: candidate.email,
@@ -56,6 +57,7 @@ router.post('/storeCandidates', async (req, res) => {
         sex: candidate.sex,
         username: candidate.email, // Use email as username
         password: randomPassword,
+        batchId // Store the batchId here
       });
 
       await newCandidate.save();

@@ -10,7 +10,10 @@ const candidateSchema = new mongoose.Schema({
   sex: { type: String, required: true },
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  batchIds: [{ type: String }] // Add batchIds array
+  batchId: {
+    type: mongoose.Schema.Types.String,
+    ref: 'InterviewBatch'
+  } // Add batchIds array
 });
 
 const Candidate = mongoose.model('Candidate', candidateSchema);
