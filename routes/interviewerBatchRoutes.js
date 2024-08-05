@@ -39,7 +39,8 @@ router.post('/get-batch', async (req, res) => {
     batch = batch.toObject();
     batch.candidates = json;
 
-    const availableDays = ['Monday', 'Wednesday', 'Friday'];
+    // Define the interviewer's available days and time slot
+    const availableDays = ['Monday', 'Wednesday', 'Saturday'];
     const timeSlot = '09:00-11:00';
 
     // Define the list of interviewees with email and score
@@ -51,7 +52,24 @@ router.post('/get-batch', async (req, res) => {
       { "email": "Eve@gmail.com", "score": 90, "time": "" },
       { "email": "Frank@gmail.com", "score": 55, "time": "" },
       { "email": "Grace@gmail.com", "score": 65, "time": "" },
-      { "email": "Hannah@gmail.com", "score": 75, "time": "" }
+      { "email": "Hannah@gmail.com", "score": 75, "time": "" },
+      { "email": "Alice@gmail.com", "score": 50, "time": "" },
+      { "email": "Bob@gmail.com", "score": 60, "time": "" },
+      { "email": "Charlie@gmail.com", "score": 70, "time": "" },
+      { "email": "David@gmail.com", "score": 80, "time": "" },
+      { "email": "Eve@gmail.com", "score": 90, "time": "" },
+      { "email": "Frank@gmail.com", "score": 55, "time": "" },
+      { "email": "Grace@gmail.com", "score": 65, "time": "" },
+      { "email": "Hannah@gmail.com", "score": 75, "time": "" },
+      { "email": "Hannah@gmail.com", "score": 75, "time": "" },
+      { "email": "Alice@gmail.com", "score": 50, "time": "" },
+      { "email": "Bob@gmail.com", "score": 60, "time": "" },
+      { "email": "Charlie@gmail.com", "score": 70, "time": "" },
+      { "email": "David@gmail.com", "score": 80, "time": "" },
+      { "email": "Eve@gmail.com", "score": 90, "time": "" },
+      { "email": "Frank@gmail.com", "score": 55, "time": "" },
+      { "email": "Grace@gmail.com", "score": 65, "time": "" },
+      { "email": "Hannah@gmail.com", "score": 75, "time": "" },
     ];
 
     // Get the schedule
@@ -70,11 +88,13 @@ router.post('/get-batch', async (req, res) => {
 });
 
 
-// Utility function to add minutes to a datetime string in YYYY-MM-DDTHH:MM format
-function addMinutes(datetime, minutes) {
-  const date = new Date(datetime);
-  date.setMinutes(date.getMinutes() + minutes);
-  return date.toISOString().slice(0, 16); // Return datetime in YYYY-MM-DDTHH:MM format
+// Function to add minutes to a time string
+function addMinutes(time, minsToAdd) {
+  let [hours, minutes] = time.split(':').map(Number);
+  minutes += minsToAdd;
+  hours += Math.floor(minutes / 60);
+  minutes %= 60;
+  return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
 }
 
 // Function to get the ordered days starting from the current day
@@ -98,46 +118,67 @@ function getOrderedDays(days) {
   return orderedDays;
 }
 
+// Function to get the next date for a given day of the week
+function getNextDateForDay(day, currentDate) {
+  const dayMap = {
+    'Sunday': 0,
+    'Monday': 1,
+    'Tuesday': 2,
+    'Wednesday': 3,
+    'Thursday': 4,
+    'Friday': 5,
+    'Saturday': 6
+  };
+
+  const currentDayIndex = currentDate.getDay();
+  const targetDayIndex = dayMap[day];
+  const daysUntilNext = (targetDayIndex - currentDayIndex + 7) % 7;
+
+  const nextDate = new Date(currentDate);
+  nextDate.setDate(currentDate.getDate() + daysUntilNext);
+
+  return nextDate;
+}
+
 // Scheduler function
 function scheduleInterviews(days, timeSlot, interviewees) {
   const orderedDays = getOrderedDays(days);
   const schedule = {};
-  const interviewDuration = 15; // in minutes
-  const breakDuration = 5; // in minutes
+  const interviewDuration = 15;
+  const breakDuration = 5;
 
   let intervieweeIndex = 0;
 
-  for (const day of orderedDays) {
-    if (intervieweeIndex >= interviewees.length) break; // Stop if no more interviewees
+  const today = new Date();
 
-    schedule[day] = [];
-    let [startTime, endTime] = timeSlot.split('-');
-    const currentYear = new Date().getFullYear();
-    const currentMonth = String(new Date().getMonth() + 1).padStart(2, '0'); // Months are 0-based
-    const currentDate = String(new Date().getDate()).padStart(2, '0');
+  while (intervieweeIndex < interviewees.length) {
+    for (const day of orderedDays) {
+      if (intervieweeIndex >= interviewees.length) break; // Stop if no more interviewees
 
-    // Create a base date for the current day
-    let baseDate = `${currentYear}-${currentMonth}-${currentDate}`;
+      schedule[day] = schedule[day] || [];
+      let [start, end] = timeSlot.split('-');
 
-    // Set the start and end datetime for the current day
-    let startDateTime = `${baseDate}T${startTime}`;
-    const endDateTime = `${baseDate}T${endTime}`;
+      while (start < end) {
+        if (intervieweeIndex >= interviewees.length) break; // Stop if no more interviewees
 
-    // Loop to schedule interviews within the time slot
-    while (startDateTime < endDateTime && intervieweeIndex < interviewees.length) {
-      let nextSlotDateTime = addMinutes(startDateTime, interviewDuration);
+        let nextSlot = addMinutes(start, interviewDuration);
 
-      // Check if the next interview would end after the available end time
-      if (nextSlotDateTime > endDateTime) break;
+        // Check if the next interview would end after the available end time
+        if (nextSlot > end) break;
 
-      // Schedule the interviewee and update their time field
-      interviewees[intervieweeIndex].time = startDateTime;
+        // Get the next date for the current day
+        let interviewDay = getNextDateForDay(day, today);
 
-      schedule[day].push(interviewees[intervieweeIndex]);
+        // Schedule the interviewee and update their time field
+        interviewees[intervieweeIndex].time = `${interviewDay.toISOString().split('T')[0]}T${start}`;
 
-      intervieweeIndex++;
-      startDateTime = addMinutes(nextSlotDateTime, breakDuration); // Update startDateTime after the break
+        schedule[day].push(interviewees[intervieweeIndex]);
+
+        intervieweeIndex++;
+        start = addMinutes(nextSlot, breakDuration); // Next slot starts after the break
+      }
     }
+    today.setDate(today.getDate() + 7); // Move to the next week
   }
 
   return schedule;
