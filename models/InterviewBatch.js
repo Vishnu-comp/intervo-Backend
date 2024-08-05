@@ -1,4 +1,4 @@
-// models/interviewBatchSchema.js
+// models/interviewBatch.js
 import mongoose from 'mongoose';
 
 const interviewBatchSchema = new mongoose.Schema({
@@ -11,7 +11,13 @@ const interviewBatchSchema = new mongoose.Schema({
   deadline: { type: Date, required: true },
   csvFile: { type: String, required: true },
   note: { type: String, required: true },
-  interviewers: {type: Object, default: {}},
+  interviewers: { type: Object, default: {} },
+  candidates: [{
+    email: { type: String, required: true },
+    testScore: { type: Number, default: 0 },
+    interviewScore: { type: Number, default: 0 },
+    time: { type: Date, default: Date.now }
+  }],
 }, {
   timestamps: true,
 });
