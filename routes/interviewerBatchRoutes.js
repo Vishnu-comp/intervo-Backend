@@ -34,14 +34,16 @@ router.post('/get-batch', async (req, res) => {
 
   try {
     let batch = await InterviewBatch.findOne({ batchId });
+    let interviewer = await Interviewer.findOne({ email });
     const filePath = path.join(__dirname, batch.csvFile);
     const json = await csvToJson(filePath);
     batch = batch.toObject();
-    batch.candidates = json;
+    batch.tableData = json;
+    console.log(interviewer);
 
     // Define the interviewer's available days and time slot
-    const availableDays = ['Monday', 'Wednesday', 'Saturday'];
-    const timeSlot = '09:00-11:00';
+    // const availableDays = ['Monday', 'Wednesday', 'Saturday'];
+    const timeSlot = `${interviewer.timeFrom}-${interviewer.timeTo}`;
 
     // Define the list of interviewees with email and score
     const interviewees = [
@@ -73,11 +75,13 @@ router.post('/get-batch', async (req, res) => {
     ];
 
     // Get the schedule
-    const interviewSchedule = scheduleInterviews(availableDays, timeSlot, interviewees);
+    const interviewSchedule = scheduleInterviews(interviewer.days, timeSlot, batch.candidates);
 
-    console.log(JSON.stringify(interviewees, null, 2));
+    // console.log(JSON.stringify(interviewSchedule, null, 2));
     console.log('=================================================================');
 
+    batch.schedule = JSON.stringify(interviewSchedule, null, 2);
+    console.log(batch);
 
     res.status(200).json(batch);
 
