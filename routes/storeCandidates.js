@@ -57,7 +57,8 @@ router.post('/storeCandidates', async (req, res) => {
         sex: candidate.sex,
         username: candidate.email, // Use email as username
         password: randomPassword,
-        batchId // Store the batchId here
+        batchId,
+        testtime: null 
       });
 
       await newCandidate.save();
@@ -73,7 +74,7 @@ router.post('/storeCandidates', async (req, res) => {
       // Update InterviewBatch with candidate
       await InterviewBatch.updateOne(
         { batchId },
-        { $push: { candidates: { email: candidate.email, testScore: 0, interviewScore: 0 } } }
+        { $push: { candidates: { email: candidate.email, testScore: 0, interviewScore: 0 , testtime: null} } }
       );
     });
 
