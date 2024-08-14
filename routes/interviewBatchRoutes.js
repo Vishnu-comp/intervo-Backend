@@ -50,6 +50,8 @@ router.post('/interviewBatch', upload.single('csvFile'), async (req, res) => {
     const csvFileRelativePath = path.relative(__dirname, req.file.path).replace(/\\/g, '/');
     
     const batchId = await generateUniqueBatchId(InterviewBatch); // Generate unique batchId
+    const candidates = await csvToCandidateArray(req.file.path);
+    console.log(JSON.parse(candidates).length);
 
     const interviewBatch = new InterviewBatch({
       companyName: req.body.companyName,
@@ -61,6 +63,7 @@ router.post('/interviewBatch', upload.single('csvFile'), async (req, res) => {
       csvFile: csvFileRelativePath,
       note: req.body.note,
       batchId, // Add the batchId here
+      candidates: JSON.parse(candidates),
     });
 
     await interviewBatch.save();
@@ -76,5 +79,26 @@ router.get('/getCSVFile/:filename', (req, res) => {
   const filePath = path.join(__dirname, '../uploads/csv', req.params.filename);
   res.sendFile(filePath);
 });
+
+function csvToCandidateArray(filePath) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+        return reject(err);
+      }
+
+      const lines = data.split('\n').filter(line => line.trim() !== '');
+      const headers = lines[0].split(',');
+
+      const result = lines.slice(1).map(line => {
+        const values = line.split(',');
+        const email = values[1] ? values[1].trim() : null; 
+        return { email, testScore: 0, interviewScore: 0, time: null };
+      });
+
+      resolve(JSON.stringify(result, null, 2));
+    });
+  });
+}
 
 export default router;

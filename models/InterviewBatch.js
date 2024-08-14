@@ -16,8 +16,7 @@ const interviewBatchSchema = new mongoose.Schema({
     email: { type: String, required: true },
     testScore: { type: Number, default: 0 },
     interviewScore: { type: Number, default: 0 },
-    testtime: { type: Date, default: null },
-    time: { type: Date, default: Date.now }
+    time: { type: Date, default: null }
   }],
   schedule: { type: Object, default: {} },
   meetingId: { type: String, default: null },

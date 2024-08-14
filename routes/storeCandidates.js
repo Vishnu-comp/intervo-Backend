@@ -70,12 +70,6 @@ router.post('/storeCandidates', async (req, res) => {
         subject: 'Your Account Credentials',
         text: `Your email: ${candidate.email}\nYour password: ${randomPassword}\nCompany Name: ${companyName}\nDomain: ${candidate.domain || 'Not specified'}`, // Include domain in the email
       });
-
-      // Update InterviewBatch with candidate
-      await InterviewBatch.updateOne(
-        { batchId },
-        { $push: { candidates: { email: candidate.email, testScore: 0, interviewScore: 0 , testtime: null} } }
-      );
     });
 
     await Promise.all(promises);
