@@ -18,6 +18,13 @@ const interviewBatchSchema = new mongoose.Schema({
     interviewScore: { type: Number, default: 0 },
     time: { type: Date, default: Date.now }
   }],
+  schedule: { type: Object, default: {} },
+  meetingId: { type: String, default: null },
+  testDay: { type: Date, default: () => { // Default value is tomorrow
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    return tomorrow;
+  } },
 }, {
   timestamps: true,
 });

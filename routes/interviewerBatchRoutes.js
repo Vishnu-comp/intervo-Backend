@@ -29,8 +29,29 @@ router.post('/get-new-batches', async (req, res) => {
   }
 });
 
+router.post('/get-accepted-batches', async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const allBatches = await InterviewBatch.find();
+    const interviewer = await Interviewer.findOne({ email });
+
+    const batches = allBatches.filter(batch => {
+      const isDomainMatch = batch.skills.some(domain => interviewer.domains.includes(domain));
+      const isAccepted = Object.keys(batch.interviewers).includes(email);
+      return isDomainMatch && isAccepted;
+    });
+
+    res.status(200).json(batches);
+  } catch (error) {
+    console.error('Error fetching accepted batches:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 router.post('/get-batch', async (req, res) => {
   const { batchId, email } = req.body;
+  console.log(batchId, email);
 
   try {
     let batch = await InterviewBatch.findOne({ batchId });
@@ -90,6 +111,28 @@ router.post('/get-batch', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+router.post('/accept-batch', async (req, res) => {
+  const { batchId, email, schedule } = req.body;
+
+  try {
+    let batch = await InterviewBatch.findOne({ batchId });
+    let interviewer = await Interviewer.findOne({ email });
+
+    interviewer.batchIds.push(batchId);
+    batch.interviewers[email] = interviewer;
+    batch.schedule = JSON.parse(schedule);
+
+    await interviewer.save();
+    await batch.save();
+
+    res.status(200).json({ message: 'Batch accepted successfully' });
+
+  } catch (error) {
+    console.error('Error accepting batch:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+})
 
 
 // Function to add minutes to a time string
@@ -176,7 +219,10 @@ function scheduleInterviews(days, timeSlot, interviewees) {
         // Schedule the interviewee and update their time field
         interviewees[intervieweeIndex].time = `${interviewDay.toISOString().split('T')[0]}T${start}`;
 
-        schedule[day].push(interviewees[intervieweeIndex]);
+        const filtered = interviewees[intervieweeIndex];
+        delete filtered.interviewScore;
+        delete filtered.testScore;
+        schedule[day].push(filtered);
 
         intervieweeIndex++;
         start = addMinutes(nextSlot, breakDuration); // Next slot starts after the break

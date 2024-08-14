@@ -38,6 +38,10 @@ const interviewerSchema = new Schema({
   password: {
     type: String,
     required: true
+  },
+  batchIds: {
+    type: [String],
+    required: true
   }
 });
 
