@@ -1,0 +1,742 @@
+[
+  {
+    "question": "What is the default value of a boolean variable in Java?",
+    "options": [
+      "true",
+      "false",
+      "0",
+      "null"
+    ],
+    "correct_option": "false"
+  },
+  {
+    "question": "Which keyword is used to declare a class in Java?",
+    "options": [
+      "class",
+      "define",
+      "struct",
+      "type"
+    ],
+    "correct_option": "class"
+  },
+  {
+    "question": "What does JVM stand for?",
+    "options": [
+      "Java Virtual Machine",
+      "Java Variable Machine",
+      "Java View Manager",
+      "Java Version Manager"
+    ],
+    "correct_option": "Java Virtual Machine"
+  },
+  {
+    "question": "How do you declare a constant variable in Java?",
+    "options": [
+      "final type variableName;",
+      "constant type variableName;",
+      "static type variableName;",
+      "immutable type variableName;"
+    ],
+    "correct_option": "final type variableName;"
+  },
+  {
+    "question": "What is the output of `System.out.println(5 + 3 * 2);`?",
+    "options": [
+      "16",
+      "11",
+      "10",
+      "8"
+    ],
+    "correct_option": "11"
+  },
+  {
+    "question": "Which access modifier allows access from within the same package only?",
+    "options": [
+      "protected",
+      "private",
+      "public",
+      "default"
+    ],
+    "correct_option": "default"
+  },
+  {
+    "question": "What is the correct way to create a new instance of a class?",
+    "options": [
+      "ClassName obj = new ClassName();",
+      "ClassName obj = ClassName();",
+      "ClassName obj = create ClassName();",
+      "new ClassName obj = ClassName();"
+    ],
+    "correct_option": "ClassName obj = new ClassName();"
+  },
+  {
+    "question": "How do you handle exceptions in Java?",
+    "options": [
+      "try-catch block",
+      "if-else block",
+      "switch-case block",
+      "for loop"
+    ],
+    "correct_option": "try-catch block"
+  },
+  {
+    "question": "Which method is used to start a thread in Java?",
+    "options": [
+      "start()",
+      "run()",
+      "execute()",
+      "begin()"
+    ],
+    "correct_option": "start()"
+  },
+  {
+    "question": "What is the output of `System.out.println(10 % 3);`?",
+    "options": [
+      "1",
+      "3",
+      "10",
+      "0"
+    ],
+    "correct_option": "1"
+  },
+  {
+    "question": "Which keyword is used to inherit a class in Java?",
+    "options": [
+      "extends",
+      "inherits",
+      "implements",
+      "derives"
+    ],
+    "correct_option": "extends"
+  },
+  {
+    "question": "What is a method in Java?",
+    "options": [
+      "A block of code that performs a specific task",
+      "A variable that holds data",
+      "A keyword used to create a class",
+      "An operator used for comparison"
+    ],
+    "correct_option": "A block of code that performs a specific task"
+  },
+  {
+    "question": "How do you define an abstract class in Java?",
+    "options": [
+      "abstract class ClassName { }",
+      "class ClassName abstract { }",
+      "abstract ClassName { }",
+      "ClassName class abstract { }"
+    ],
+    "correct_option": "abstract class ClassName { }"
+  },
+  {
+    "question": "What is the base class for all classes in Java?",
+    "options": [
+      "Object",
+      "Class",
+      "Base",
+      "Super"
+    ],
+    "correct_option": "Object"
+  },
+  {
+    "question": "Which keyword is used to prevent a method from being overridden?",
+    "options": [
+      "final",
+      "static",
+      "private",
+      "protected"
+    ],
+    "correct_option": "final"
+  },
+  {
+    "question": "What is the purpose of the `super` keyword?",
+    "options": [
+      "To refer to the superclass of the current object",
+      "To create a new superclass",
+      "To define a superclass",
+      "To access private members of the current class"
+    ],
+    "correct_option": "To refer to the superclass of the current object"
+  },
+  {
+    "question": "How do you declare a multi-dimensional array in Java?",
+    "options": [
+      "type[][] arrayName;",
+      "type arrayName[][];",
+      "type arrayName[rows][columns];",
+      "type arrayName(rows, columns);"
+    ],
+    "correct_option": "type[][] arrayName;"
+  },
+  {
+    "question": "Which method is called when an object is created in Java?",
+    "options": [
+      "constructor",
+      "initializer",
+      "creator",
+      "constructor method"
+    ],
+    "correct_option": "constructor"
+  },
+  {
+    "question": "How do you define an interface in Java?",
+    "options": [
+      "interface InterfaceName { }",
+      "class InterfaceName { }",
+      "abstract class InterfaceName { }",
+      "interface class InterfaceName { }"
+    ],
+    "correct_option": "interface InterfaceName { }"
+  },
+  {
+    "question": "Which of the following is not a valid data type in Java?",
+    "options": [
+      "int",
+      "float",
+      "boolean",
+      "real"
+    ],
+    "correct_option": "real"
+  },
+  {
+    "question": "What is the output of `System.out.println(5 + 2 * 3);`?",
+    "options": [
+      "11",
+      "16",
+      "10",
+      "7"
+    ],
+    "correct_option": "11"
+  },
+  {
+    "question": "What is the correct way to call a static method?",
+    "options": [
+      "ClassName.methodName();",
+      "methodName();",
+      "this.methodName();",
+      "object.methodName();"
+    ],
+    "correct_option": "ClassName.methodName();"
+  },
+  {
+    "question": "How do you define a class with no constructors in Java?",
+    "options": [
+      "class ClassName { }",
+      "class ClassName { public ClassName() { } }",
+      "class ClassName { private ClassName() { } }",
+      "class ClassName { public ClassName(int a) { } }"
+    ],
+    "correct_option": "class ClassName { }"
+  },
+  {
+    "question": "What is the purpose of the `this` keyword?",
+    "options": [
+      "To refer to the current instance of the class",
+      "To call a superclass method",
+      "To define a new method",
+      "To declare a variable"
+    ],
+    "correct_option": "To refer to the current instance of the class"
+  },
+  {
+    "question": "How do you handle multiple exceptions in Java?",
+    "options": [
+      "Using multiple catch blocks",
+      "Using multiple try blocks",
+      "Using multiple finally blocks",
+      "Using a single catch block"
+    ],
+    "correct_option": "Using multiple catch blocks"
+  },
+  {
+    "question": "What is the purpose of the `static` keyword in Java?",
+    "options": [
+      "To define class-level variables or methods",
+      "To define instance-level variables or methods",
+      "To declare constants",
+      "To initialize objects"
+    ],
+    "correct_option": "To define class-level variables or methods"
+  },
+  {
+    "question": "Which of the following is a wrapper class for `int` in Java?",
+    "options": [
+      "Integer",
+      "Int",
+      "Number",
+      "IntWrapper"
+    ],
+    "correct_option": "Integer"
+  },
+  {
+    "question": "What is the output of `System.out.println(\"Hello\".length());`?",
+    "options": [
+      "5",
+      "6",
+      "Hello",
+      "null"
+    ],
+    "correct_option": "5"
+  },
+  {
+    "question": "How do you create an array of objects in Java?",
+    "options": [
+      "ClassName[] arrayName;",
+      "ClassName arrayName[];",
+      "ClassName arrayName(rows);",
+      "ClassName[] arrayName = new ClassName[rows];"
+    ],
+    "correct_option": "ClassName[] arrayName = new ClassName[rows];"
+  },
+  {
+    "question": "Which of the following is not a valid loop in Java?",
+    "options": [
+      "for",
+      "while",
+      "do-while",
+      "repeat"
+    ],
+    "correct_option": "repeat"
+  },
+  {
+    "question": "What is the purpose of the `synchronized` keyword?",
+    "options": [
+      "To ensure that a method or block of code is accessed by only one thread at a time",
+      "To define a method that can be accessed by multiple threads",
+      "To synchronize objects across different classes",
+      "To perform a type conversion"
+    ],
+    "correct_option": "To ensure that a method or block of code is accessed by only one thread at a time"
+  },
+  {
+    "question": "How do you declare a method that does not return any value?",
+    "options": [
+      "void methodName() { }",
+      "returnType methodName() { }",
+      "methodName() { }",
+      "void returnType methodName() { }"
+    ],
+    "correct_option": "void methodName() { }"
+  },
+  {
+    "question": "Which keyword is used to create a new instance of an object?",
+    "options": [
+      "new",
+      "create",
+      "instantiate",
+      "class"
+    ],
+    "correct_option": "new"
+  },
+  {
+    "question": "What is the default value of a `char` variable in Java?",
+    "options": [
+      "'\u0000'",
+      "'a'",
+      "' '",
+      "'0'"
+    ],
+    "correct_option": "'\u0000'"
+  },
+  {
+    "question": "How do you create an enumeration in Java?",
+    "options": [
+      "enum EnumName { VALUE1, VALUE2 }",
+      "class EnumName { VALUE1, VALUE2; }",
+      "enum EnumName() { VALUE1, VALUE2 }",
+      "class EnumName() { enum VALUE1, VALUE2; }"
+    ],
+    "correct_option": "enum EnumName { VALUE1, VALUE2 }"
+  },
+  {
+    "question": "Which method is used to convert a string to an integer in Java?",
+    "options": [
+      "Integer.parseInt()",
+      "String.toInteger()",
+      "Integer.toInt()",
+      "String.parseInt()"
+    ],
+    "correct_option": "Integer.parseInt()"
+  },
+  {
+    "question": "What is the output of `System.out.println(3 * 2 + 1);`?",
+    "options": [
+      "7",
+      "8",
+      "6",
+      "5"
+    ],
+    "correct_option": "7"
+  },
+  {
+    "question": "Which of the following is not an access modifier in Java?",
+    "options": [
+      "private",
+      "public",
+      "protected",
+      "internal"
+    ],
+    "correct_option": "internal"
+  },
+  {
+    "question": "How do you declare a method that takes no parameters in Java?",
+    "options": [
+      "returnType methodName() { }",
+      "returnType methodName(parameters) { }",
+      "returnType methodName[] { }",
+      "returnType methodName(params) { }"
+    ],
+    "correct_option": "returnType methodName() { }"
+  },
+  {
+    "question": "What is the purpose of the `instanceof` keyword?",
+    "options": [
+      "To test whether an object is an instance of a specific class or subclass",
+      "To create a new instance of a class",
+      "To define a new class",
+      "To check if an object is null"
+    ],
+    "correct_option": "To test whether an object is an instance of a specific class or subclass"
+  },
+  {
+    "question": "How do you declare an array of integers in Java?",
+    "options": [
+      "int[] arrayName;",
+      "int arrayName[];",
+      "int[] arrayName = new int[size];",
+      "int arrayName(size);"
+    ],
+    "correct_option": "int[] arrayName = new int[size];"
+  },
+  {
+    "question": "What is the output of `System.out.println(\"Hello\".charAt(0));`?",
+    "options": [
+      "H",
+      "e",
+      "l",
+      "o"
+    ],
+    "correct_option": "H"
+  },
+  {
+    "question": "How do you define a package in Java?",
+    "options": [
+      "package packageName;",
+      "define package packageName;",
+      "class packageName;",
+      "import packageName;"
+    ],
+    "correct_option": "package packageName;"
+  },
+  {
+    "question": "Which method is called when an exception is thrown?",
+    "options": [
+      "catch",
+      "finally",
+      "throw",
+      "try"
+    ],
+    "correct_option": "catch"
+  },
+  {
+    "question": "What is the output of `System.out.println(\"abc\".concat(\"def\"));`?",
+    "options": [
+      "abcdef",
+      "abc def",
+      "abcdefg",
+      "abc+def"
+    ],
+    "correct_option": "abcdef"
+  },
+  {
+    "question": "How do you define a method that can throw exceptions in Java?",
+    "options": [
+      "returnType methodName() throws ExceptionType { }",
+      "returnType methodName() { throw ExceptionType; }",
+      "returnType methodName() { throws ExceptionType; }",
+      "returnType methodName() throws { ExceptionType; }"
+    ],
+    "correct_option": "returnType methodName() throws ExceptionType { }"
+  },
+  {
+    "question": "What is the output of `System.out.println(5 / 2);`?",
+    "options": [
+      "2",
+      "2.5",
+      "2.0",
+      "3"
+    ],
+    "correct_option": "2"
+  },
+  {
+    "question": "Which keyword is used to create a subclass in Java?",
+    "options": [
+      "extends",
+      "inherits",
+      "implements",
+      "super"
+    ],
+    "correct_option": "extends"
+  },
+  {
+    "question": "What is the purpose of the `final` keyword?",
+    "options": [
+      "To define constants, prevent method overriding, and inheritance",
+      "To define a method that cannot be overridden",
+      "To create a new class",
+      "To declare a variable that can be modified"
+    ],
+    "correct_option": "To define constants, prevent method overriding, and inheritance"
+  },
+  {
+    "question": "How do you call a method from another class in Java?",
+    "options": [
+      "ClassName.methodName();",
+      "this.methodName();",
+      "object.methodName();",
+      "methodName();"
+    ],
+    "correct_option": "ClassName.methodName();"
+  },
+  {
+    "question": "What is the purpose of the `public` keyword?",
+    "options": [
+      "To make the class, method, or variable accessible from any other class",
+      "To restrict access to the class, method, or variable",
+      "To define the visibility of a class",
+      "To create a constant variable"
+    ],
+    "correct_option": "To make the class, method, or variable accessible from any other class"
+  },
+  {
+    "question": "How do you create a new instance of a `String` object in Java?",
+    "options": [
+      "String str = new String(\"value\");",
+      "String str = String(\"value\");",
+      "String str = new String();",
+      "String str = create String(\"value\");"
+    ],
+    "correct_option": "String str = new String(\"value\");"
+  },
+  {
+    "question": "What is the output of `System.out.println(\"Java\".substring(1, 4));`?",
+    "options": [
+      "ava",
+      "Jav",
+      "avae",
+      "Java"
+    ],
+    "correct_option": "ava"
+  },
+  {
+    "question": "How do you create an array of objects in Java?",
+    "options": [
+      "ClassName[] arrayName = new ClassName[size];",
+      "ClassName arrayName[] = new ClassName[size];",
+      "ClassName arrayName = new ClassName[size];",
+      "ClassName[] arrayName = new ClassName[];"
+    ],
+    "correct_option": "ClassName[] arrayName = new ClassName[size];"
+  },
+  {
+    "question": "What is the output of `System.out.println(\"Hello\".replace('e', 'a'));`?",
+    "options": [
+      "Hallo",
+      "Halla",
+      "Hello",
+      "Hollo"
+    ],
+    "correct_option": "Hallo"
+  },
+  {
+    "question": "What is the use of the `default` keyword in an interface?",
+    "options": [
+      "To provide a default implementation for methods in an interface",
+      "To define a new class",
+      "To create a new interface",
+      "To override a method"
+    ],
+    "correct_option": "To provide a default implementation for methods in an interface"
+  },
+  {
+    "question": "How do you create a new thread in Java?",
+    "options": [
+      "By implementing the Runnable interface",
+      "By extending the Thread class",
+      "By using the ThreadPoolExecutor",
+      "Both a and b"
+    ],
+    "correct_option": "Both a and b"
+  },
+  {
+    "question": "Which of the following is not a valid data type in Java?",
+    "options": [
+      "String",
+      "int",
+      "boolean",
+      "char"
+    ],
+    "correct_option": "String"
+  },
+  {
+    "question": "What is the purpose of the `assert` keyword?",
+    "options": [
+      "To perform debugging and testing",
+      "To declare a constant",
+      "To create an assertion",
+      "To define a variable"
+    ],
+    "correct_option": "To perform debugging and testing"
+  },
+  {
+    "question": "What is the output of `System.out.println(\"Java\".toUpperCase());`?",
+    "options": [
+      "JAVA",
+      "Java",
+      "JAVA ",
+      "java"
+    ],
+    "correct_option": "JAVA"
+  },
+  {
+    "question": "What is the purpose of the `continue` statement in a loop?",
+    "options": [
+      "To skip the current iteration and proceed to the next iteration",
+      "To break out of the loop",
+      "To exit the loop and continue execution after the loop",
+      "To pause the loop execution"
+    ],
+    "correct_option": "To skip the current iteration and proceed to the next iteration"
+  },
+  {
+    "question": "What is the output of `System.out.println(\"5\" + 3);`?",
+    "options": [
+      "53",
+      "8",
+      "15",
+      "null"
+    ],
+    "correct_option": "53"
+  },
+  {
+    "question": "Which method is used to read input from the console?",
+    "options": [
+      "Scanner.next()",
+      "InputStream.read()",
+      "Console.readLine()",
+      "BufferedReader.read()"
+    ],
+    "correct_option": "Scanner.next()"
+  },
+  {
+    "question": "How do you declare a constant in Java?",
+    "options": [
+      "final type CONSTANT_NAME;",
+      "const type CONSTANT_NAME;",
+      "static final type CONSTANT_NAME;",
+      "immutable type CONSTANT_NAME;"
+    ],
+    "correct_option": "static final type CONSTANT_NAME;"
+  },
+  {
+    "question": "Which keyword is used to define a package in Java?",
+    "options": [
+      "package",
+      "import",
+      "define",
+      "namespace"
+    ],
+    "correct_option": "package"
+  },
+  {
+    "question": "What is the output of `System.out.println(2 * (3 + 4));`?",
+    "options": [
+      "14",
+      "12",
+      "7",
+      "9"
+    ],
+    "correct_option": "14"
+  },
+  {
+    "question": "How do you create a new instance of a class in Java?",
+    "options": [
+      "ClassName obj = new ClassName();",
+      "ClassName obj = ClassName();",
+      "new ClassName obj = ClassName();",
+      "ClassName obj = create ClassName();"
+    ],
+    "correct_option": "ClassName obj = new ClassName();"
+  },
+  {
+    "question": "Which of the following is used to check equality of two objects in Java?",
+    "options": [
+      "equals()",
+      "==",
+      "compareTo()",
+      "isEqual()"
+    ],
+    "correct_option": "equals()"
+  },
+  {
+    "question": "What is the purpose of the `super` keyword?",
+    "options": [
+      "To access superclass methods and constructors",
+      "To define a superclass",
+      "To create a new object",
+      "To access private members"
+    ],
+    "correct_option": "To access superclass methods and constructors"
+  },
+  {
+    "question": "How do you create a new package in Java?",
+    "options": [
+      "package packageName;",
+      "create package packageName;",
+      "define packageName;",
+      "new package packageName;"
+    ],
+    "correct_option": "package packageName;"
+  },
+  {
+    "question": "What is the default value of a `String` variable in Java?",
+    "options": [
+      "null",
+      "empty string",
+      "undefined",
+      "0"
+    ],
+    "correct_option": "null"
+  },
+  {
+    "question": "How do you access an element of an array in Java?",
+    "options": [
+      "arrayName[index]",
+      "arrayName.get(index)",
+      "arrayName[index];",
+      "arrayName(index);"
+    ],
+    "correct_option": "arrayName[index]"
+  },
+  {
+    "question": "What is the output of `System.out.println(7 - 4 * 2);`?",
+    "options": [
+      "-1",
+      "6",
+      "2",
+      "7"
+    ],
+    "correct_option": "-1"
+  },
+  {
+    "question": "How do you declare a two-dimensional array in Java?",
+    "options": [
+      "type[][] arrayName;",
+      "type arrayName[][];",
+      "type[] arrayName[];",
+      "type[][] arrayName = new type[rows][columns];"
+    ],
+    "correct_option": "type[][] arrayName;"
+  }
+]

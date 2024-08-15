@@ -1,0 +1,802 @@
+[
+  {
+    "question": "What is the default access specifier for members of a class in C++?",
+    "options": [
+      "private",
+      "public",
+      "protected",
+      "None of the above"
+    ],
+    "correct_option": "private"
+  },
+  {
+    "question": "Which keyword is used to define a class in C++?",
+    "options": [
+      "class",
+      "struct",
+      "object",
+      "type"
+    ],
+    "correct_option": "class"
+  },
+  {
+    "question": "What is the output of the following code: `cout << 5 / 2;`?",
+    "options": [
+      "2",
+      "2.5",
+      "2.0",
+      "5"
+    ],
+    "correct_option": "2"
+  },
+  {
+    "question": "How do you declare a constructor in C++?",
+    "options": [
+      "ClassName();",
+      "Constructor();",
+      "void ClassName();",
+      "ClassName() {}"
+    ],
+    "correct_option": "ClassName() {}"
+  },
+  {
+    "question": "What is the purpose of the `virtual` keyword in C++?",
+    "options": [
+      "To enable dynamic dispatch",
+      "To declare a static method",
+      "To define a constant member",
+      "To create an abstract class"
+    ],
+    "correct_option": "To enable dynamic dispatch"
+  },
+  {
+    "question": "Which operator is used to access a member of a class through a pointer?",
+    "options": [
+      "->",
+      ".",
+      "*",
+      "&"
+    ],
+    "correct_option": "->"
+  },
+  {
+    "question": "How do you define a pure virtual function in C++?",
+    "options": [
+      "virtual returnType functionName() = 0;",
+      "virtual returnType functionName() = nullptr;",
+      "virtual returnType functionName();",
+      "pure virtual returnType functionName();"
+    ],
+    "correct_option": "virtual returnType functionName() = 0;"
+  },
+  {
+    "question": "What is the output of `cout << 3 + 2 * 2;`?",
+    "options": [
+      "7",
+      "10",
+      "8",
+      "6"
+    ],
+    "correct_option": "7"
+  },
+  {
+    "question": "Which keyword is used to handle exceptions in C++?",
+    "options": [
+      "try",
+      "catch",
+      "throw",
+      "All of the above"
+    ],
+    "correct_option": "All of the above"
+  },
+  {
+    "question": "What is the difference between `struct` and `class` in C++?",
+    "options": [
+      "The default access specifier (public for struct, private for class)",
+      "struct can only be used for data members",
+      "class cannot have member functions",
+      "None of the above"
+    ],
+    "correct_option": "The default access specifier (public for struct, private for class)"
+  },
+  {
+    "question": "How do you declare a static member variable in a class?",
+    "options": [
+      "static type variableName;",
+      "type static variableName;",
+      "type variableName = static;",
+      "static variableName;"
+    ],
+    "correct_option": "static type variableName;"
+  },
+  {
+    "question": "What is the output of `cout << sizeof(char);`?",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "8"
+    ],
+    "correct_option": "1"
+  },
+  {
+    "question": "Which of the following is used to initialize a constant variable in C++?",
+    "options": [
+      "const",
+      "static",
+      "final",
+      "immutable"
+    ],
+    "correct_option": "const"
+  },
+  {
+    "question": "What is a destructor in C++?",
+    "options": [
+      "A method that cleans up resources when an object is destroyed",
+      "A method that initializes an object",
+      "A method that copies an object",
+      "A method that compares objects"
+    ],
+    "correct_option": "A method that cleans up resources when an object is destroyed"
+  },
+  {
+    "question": "How do you overload the `+` operator in C++?",
+    "options": [
+      "returnType operator+(const Type& other);",
+      "returnType +operator(const Type& other);",
+      "operator+() { }",
+      "None of the above"
+    ],
+    "correct_option": "returnType operator+(const Type& other);"
+  },
+  {
+    "question": "What is a friend function in C++?",
+    "options": [
+      "A function that can access private and protected members of a class",
+      "A function that is a member of a class",
+      "A function that is declared within the class",
+      "None of the above"
+    ],
+    "correct_option": "A function that can access private and protected members of a class"
+  },
+  {
+    "question": "Which keyword is used to define a template in C++?",
+    "options": [
+      "template",
+      "generic",
+      "type",
+      "class"
+    ],
+    "correct_option": "template"
+  },
+  {
+    "question": "What is the output of `cout << (5 & 3);`?",
+    "options": [
+      "1",
+      "0",
+      "5",
+      "3"
+    ],
+    "correct_option": "1"
+  },
+  {
+    "question": "How do you create a dynamic array in C++?",
+    "options": [
+      "new type[size];",
+      "malloc(size * sizeof(type));",
+      "type *arr = new type[size];",
+      "type arr[size] = new type;"
+    ],
+    "correct_option": "type *arr = new type[size];"
+  },
+  {
+    "question": "What is the purpose of the `public` access specifier?",
+    "options": [
+      "Members are accessible from outside the class",
+      "Members are accessible only within the class",
+      "Members are accessible only within derived classes",
+      "None of the above"
+    ],
+    "correct_option": "Members are accessible from outside the class"
+  },
+  {
+    "question": "How do you declare a class in C++?",
+    "options": [
+      "class ClassName { };",
+      "struct ClassName { };",
+      "object ClassName { };",
+      "define ClassName { };"
+    ],
+    "correct_option": "class ClassName { };"
+  },
+  {
+    "question": "What is the purpose of the `protected` access specifier?",
+    "options": [
+      "Members are accessible only within the class and derived classes",
+      "Members are accessible from outside the class",
+      "Members are accessible only within the class",
+      "None of the above"
+    ],
+    "correct_option": "Members are accessible only within the class and derived classes"
+  },
+  {
+    "question": "How do you define a constant member function in a class?",
+    "options": [
+      "returnType functionName() const;",
+      "const returnType functionName();",
+      "returnType const functionName();",
+      "functionName() const returnType;"
+    ],
+    "correct_option": "returnType functionName() const;"
+  },
+  {
+    "question": "What is the output of `cout << 2.0 / 3;`?",
+    "options": [
+      "0.666667",
+      "0",
+      "2",
+      "3"
+    ],
+    "correct_option": "0.666667"
+  },
+  {
+    "question": "How do you use a base class's constructor in a derived class?",
+    "options": [
+      "Using an initialization list",
+      "Calling the base class constructor directly",
+      "Defining a constructor in the base class",
+      "None of the above"
+    ],
+    "correct_option": "Using an initialization list"
+  },
+  {
+    "question": "What is the purpose of the `override` keyword?",
+    "options": [
+      "To indicate that a function is overriding a base class virtual function",
+      "To create a new virtual function",
+      "To define a pure virtual function",
+      "To declare a static function"
+    ],
+    "correct_option": "To indicate that a function is overriding a base class virtual function"
+  },
+  {
+    "question": "How do you define a class template?",
+    "options": [
+      "template <typename T> class ClassName { };",
+      "class template <typename T> ClassName { };",
+      "template <class T> class ClassName { };",
+      "template class <typename T> ClassName { };"
+    ],
+    "correct_option": "template <typename T> class ClassName { };"
+  },
+  {
+    "question": "What does the `delete` operator do in C++?",
+    "options": [
+      "Deallocates memory that was previously allocated with `new`",
+      "Allocates memory",
+      "Deletes a file",
+      "None of the above"
+    ],
+    "correct_option": "Deallocates memory that was previously allocated with `new`"
+  },
+  {
+    "question": "What is the purpose of the `this` pointer in C++?",
+    "options": [
+      "To refer to the current object instance",
+      "To access static members",
+      "To create a new instance of the class",
+      "To access private members of the class"
+    ],
+    "correct_option": "To refer to the current object instance"
+  },
+  {
+    "question": "How do you handle multiple inheritance in C++?",
+    "options": [
+      "By using a virtual base class",
+      "By using multiple `class` keywords",
+      "By using `typedef`",
+      "By using `friend` classes"
+    ],
+    "correct_option": "By using a virtual base class"
+  },
+  {
+    "question": "What is the output of `cout << 10 % 3;`?",
+    "options": [
+      "1",
+      "3",
+      "10",
+      "0"
+    ],
+    "correct_option": "1"
+  },
+  {
+    "question": "How do you define an inline function in C++?",
+    "options": [
+      "inline returnType functionName() { };",
+      "returnType inline functionName() { };",
+      "functionName() inline { };",
+      "inline functionName() { };"
+    ],
+    "correct_option": "inline returnType functionName() { };"
+  },
+  {
+    "question": "What is the output of `cout << (5 << 1);`?",
+    "options": [
+      "10",
+      "5",
+      "1",
+      "11"
+    ],
+    "correct_option": "10"
+  },
+  {
+    "question": "Which of the following is a valid C++ comment?",
+    "options": [
+      "// Single line comment",
+      "/* Multi-line comment */",
+      "// This is a comment /*",
+      "## This is a comment"
+    ],
+    "correct_option": "// Single line comment"
+  },
+  {
+    "question": "How do you access a base class member in a derived class?",
+    "options": [
+      "Using scope resolution operator `::`",
+      "Using `base::memberName`",
+      "Using `this->memberName`",
+      "Directly accessing the member"
+    ],
+    "correct_option": "Using scope resolution operator `::`"
+  },
+  {
+    "question": "What does the `static_cast` operator do in C++?",
+    "options": [
+      "Performs a safe cast between related types",
+      "Performs a dangerous cast between unrelated types",
+      "Converts types using implicit conversion",
+      "None of the above"
+    ],
+    "correct_option": "Performs a safe cast between related types"
+  },
+  {
+    "question": "How do you declare a pointer to a member function?",
+    "options": [
+      "returnType (ClassName::*pointerName)(parameterType);",
+      "returnType *pointerName(ClassName::*)(parameterType);",
+      "pointerName<ClassName>::returnType(parameterType);",
+      "None of the above"
+    ],
+    "correct_option": "returnType (ClassName::*pointerName)(parameterType);"
+  },
+  {
+    "question": "What is the purpose of the `const_cast` operator?",
+    "options": [
+      "To add or remove `const` qualifiers from a variable",
+      "To perform type conversion",
+      "To handle dynamic memory allocation",
+      "To cast to a base class type"
+    ],
+    "correct_option": "To add or remove `const` qualifiers from a variable"
+  },
+  {
+    "question": "How do you define a destructor in C++?",
+    "options": [
+      "~ClassName();",
+      "ClassName~();",
+      "void ~ClassName();",
+      "ClassName::~();"
+    ],
+    "correct_option": "~ClassName();"
+  },
+  {
+    "question": "What is the purpose of the `virtual` destructor?",
+    "options": [
+      "To ensure derived class destructors are called properly",
+      "To initialize an object",
+      "To define a static member function",
+      "None of the above"
+    ],
+    "correct_option": "To ensure derived class destructors are called properly"
+  },
+  {
+    "question": "How do you declare a multi-dimensional array in C++?",
+    "options": [
+      "type array[rows][columns];",
+      "type array(rows, columns);",
+      "type array[rows, columns];",
+      "type array[rows][columns] = {0};"
+    ],
+    "correct_option": "type array[rows][columns];"
+  },
+  {
+    "question": "What is the purpose of the `override` keyword in C++?",
+    "options": [
+      "To indicate that a function is intended to override a virtual function in a base class",
+      "To define a new virtual function",
+      "To create an abstract class",
+      "To declare a static method"
+    ],
+    "correct_option": "To indicate that a function is intended to override a virtual function in a base class"
+  },
+  {
+    "question": "How do you handle memory management in C++?",
+    "options": [
+      "Using `new` and `delete` operators",
+      "Using `malloc` and `free` functions",
+      "Using `alloca` and `dealloca` functions",
+      "None of the above"
+    ],
+    "correct_option": "Using `new` and `delete` operators"
+  },
+  {
+    "question": "What is a `namespace` in C++?",
+    "options": [
+      "A container for identifiers to avoid name conflicts",
+      "A type of class",
+      "A function for creating objects",
+      "A storage class"
+    ],
+    "correct_option": "A container for identifiers to avoid name conflicts"
+  },
+  {
+    "question": "How do you access a member of a `namespace`?",
+    "options": [
+      "namespaceName::memberName",
+      "namespace::memberName",
+      "memberName.namespaceName",
+      "::namespaceName::memberName"
+    ],
+    "correct_option": "namespaceName::memberName"
+  },
+  {
+    "question": "What is the output of `cout << (5 % 2);`?",
+    "options": [
+      "1",
+      "2",
+      "5",
+      "0"
+    ],
+    "correct_option": "1"
+  },
+  {
+    "question": "How do you use a reference in C++?",
+    "options": [
+      "type &referenceName = value;",
+      "type referenceName = &value;",
+      "type *referenceName = value;",
+      "type &referenceName = &value;"
+    ],
+    "correct_option": "type &referenceName = value;"
+  },
+  {
+    "question": "What is a `friend` class in C++?",
+    "options": [
+      "A class that has access to private and protected members of another class",
+      "A class that is derived from another class",
+      "A class that defines global functions",
+      "None of the above"
+    ],
+    "correct_option": "A class that has access to private and protected members of another class"
+  },
+  {
+    "question": "How do you define an enumerated type in C++?",
+    "options": [
+      "enum EnumName { value1, value2 };",
+      "typedef enum { value1, value2 } EnumName;",
+      "enum EnumName(value1, value2);",
+      "class EnumName { public: value1, value2; };"
+    ],
+    "correct_option": "enum EnumName { value1, value2 };"
+  },
+  {
+    "question": "What does the `dynamic_cast` operator do in C++?",
+    "options": [
+      "Performs a safe cast between types in a class hierarchy",
+      "Performs an unsafe cast between unrelated types",
+      "Allocates dynamic memory",
+      "None of the above"
+    ],
+    "correct_option": "Performs a safe cast between types in a class hierarchy"
+  },
+  {
+    "question": "How do you create a copy constructor in C++?",
+    "options": [
+      "ClassName(const ClassName& other);",
+      "ClassName(ClassName other);",
+      "ClassName() { }",
+      "ClassName() : other() { }"
+    ],
+    "correct_option": "ClassName(const ClassName& other);"
+  },
+  {
+    "question": "What is the output of `cout << (10 >> 1);`?",
+    "options": [
+      "5",
+      "10",
+      "2",
+      "20"
+    ],
+    "correct_option": "5"
+  },
+  {
+    "question": "How do you define a virtual destructor in C++?",
+    "options": [
+      "virtual ~ClassName();",
+      "~ClassName() virtual;",
+      "ClassName::~();",
+      "virtual ClassName::~();"
+    ],
+    "correct_option": "virtual ~ClassName();"
+  },
+  {
+    "question": "What is the purpose of the `explicit` keyword?",
+    "options": [
+      "To prevent implicit conversions for constructors and conversion operators",
+      "To define an explicit member function",
+      "To create an explicit namespace",
+      "To indicate a function is virtual"
+    ],
+    "correct_option": "To prevent implicit conversions for constructors and conversion operators"
+  },
+  {
+    "question": "How do you define a function template in C++?",
+    "options": [
+      "template <typename T> returnType functionName(T param);",
+      "template <class T> returnType functionName(T param);",
+      "functionName<T>(T param);",
+      "returnType functionName<T>(T param);"
+    ],
+    "correct_option": "template <typename T> returnType functionName(T param);"
+  },
+  {
+    "question": "What is the purpose of the `auto` keyword in C++?",
+    "options": [
+      "To automatically deduce the type of a variable",
+      "To define an automatic variable",
+      "To declare an automatic class member",
+      "None of the above"
+    ],
+    "correct_option": "To automatically deduce the type of a variable"
+  },
+  {
+    "question": "How do you use `nullptr` in C++?",
+    "options": [
+      "To represent a null pointer",
+      "To define a null object",
+      "To initialize a pointer to zero",
+      "None of the above"
+    ],
+    "correct_option": "To represent a null pointer"
+  },
+  {
+    "question": "What is the output of `cout << (10 | 3);`?",
+    "options": [
+      "11",
+      "10",
+      "3",
+      "1"
+    ],
+    "correct_option": "11"
+  },
+  {
+    "question": "How do you declare a multi-dimensional vector in C++?",
+    "options": [
+      "std::vector<std::vector<type>> vec;",
+      "std::vector<type> vec[rows][columns];",
+      "std::vector<type> vec(rows, columns);",
+      "std::vector<type> vec(rows);"
+    ],
+    "correct_option": "std::vector<std::vector<type>> vec;"
+  },
+  {
+    "question": "What is the purpose of the `decltype` keyword?",
+    "options": [
+      "To determine the type of an expression at compile time",
+      "To declare a variable of unknown type",
+      "To create a new data type",
+      "To define a type alias"
+    ],
+    "correct_option": "To determine the type of an expression at compile time"
+  },
+  {
+    "question": "How do you use a lambda function in C++?",
+    "options": [
+      "[] (parameters) { body }",
+      "function(parameters) { body }",
+      "(parameters) => { body }",
+      "lambda(parameters) { body }"
+    ],
+    "correct_option": "[] (parameters) { body }"
+  },
+  {
+    "question": "What is the output of `cout << (5 ^ 3);`?",
+    "options": [
+      "6",
+      "1",
+      "8",
+      "7"
+    ],
+    "correct_option": "6"
+  },
+  {
+    "question": "How do you define a member function outside a class in C++?",
+    "options": [
+      "returnType ClassName::functionName(parameters) { body }",
+      "returnType functionName(parameters) { body }",
+      "ClassName::functionName(parameters) { body }",
+      "functionName(parameters) { body }"
+    ],
+    "correct_option": "returnType ClassName::functionName(parameters) { body }"
+  },
+  {
+    "question": "What is a `static` member function in C++?",
+    "options": [
+      "A function that belongs to the class rather than any object",
+      "A function that can access private members",
+      "A function that is declared within a class",
+      "None of the above"
+    ],
+    "correct_option": "A function that belongs to the class rather than any object"
+  },
+  {
+    "question": "How do you define a default argument for a function in C++?",
+    "options": [
+      "returnType functionName(parameters = defaultValue);",
+      "returnType functionName(parameters, defaultValue);",
+      "returnType functionName(parameters, defaultValue = defaultValue);",
+      "returnType functionName(parameters, defaultValue);"
+    ],
+    "correct_option": "returnType functionName(parameters = defaultValue);"
+  },
+  {
+    "question": "What is the purpose of the `using` keyword in C++?",
+    "options": [
+      "To create an alias for a type or namespace",
+      "To define a new class",
+      "To handle exceptions",
+      "To create a new namespace"
+    ],
+    "correct_option": "To create an alias for a type or namespace"
+  },
+  {
+    "question": "How do you declare a multi-dimensional array using `std::array`?",
+    "options": [
+      "std::array<std::array<type, cols>, rows> arr;",
+      "std::array<type[rows], cols> arr;",
+      "std::array<type, rows * cols> arr;",
+      "std::array<std::array<type, rows>, cols> arr;"
+    ],
+    "correct_option": "std::array<std::array<type, cols>, rows> arr;"
+  },
+  {
+    "question": "What is the purpose of the `override` keyword in C++?",
+    "options": [
+      "To specify that a function overrides a virtual function in a base class",
+      "To create an abstract class",
+      "To define a static method",
+      "To initialize an object"
+    ],
+    "correct_option": "To specify that a function overrides a virtual function in a base class"
+  },
+  {
+    "question": "How do you access a member of a base class from a derived class?",
+    "options": [
+      "Using scope resolution operator `::`",
+      "Using baseClass::memberName",
+      "Using this->memberName",
+      "Directly accessing the member"
+    ],
+    "correct_option": "Using baseClass::memberName"
+  },
+  {
+    "question": "What is the output of `cout << (8 & 5);`?",
+    "options": [
+      "0",
+      "5",
+      "8",
+      "1"
+    ],
+    "correct_option": "0"
+  },
+  {
+    "question": "How do you use the `mutable` keyword in C++?",
+    "options": [
+      "To allow modification of a member variable in a const member function",
+      "To declare a constant member",
+      "To create a new type",
+      "To define a function that can modify a variable"
+    ],
+    "correct_option": "To allow modification of a member variable in a const member function"
+  },
+  {
+    "question": "What is the purpose of the `template` keyword in C++?",
+    "options": [
+      "To define generic classes or functions",
+      "To create a new data type",
+      "To handle exceptions",
+      "To define a namespace"
+    ],
+    "correct_option": "To define generic classes or functions"
+  },
+  {
+    "question": "How do you declare a multi-dimensional vector in C++?",
+    "options": [
+      "std::vector<std::vector<type>> vec;",
+      "std::vector<type>[rows][columns];",
+      "std::vector<type> vec(rows, columns);",
+      "std::vector<type> vec[rows];"
+    ],
+    "correct_option": "std::vector<std::vector<type>> vec;"
+  },
+  {
+    "question": "What does the `reinterpret_cast` operator do?",
+    "options": [
+      "Performs a low-level cast between unrelated types",
+      "Performs a safe cast between types",
+      "Converts types with a defined conversion",
+      "None of the above"
+    ],
+    "correct_option": "Performs a low-level cast between unrelated types"
+  },
+  {
+    "question": "How do you define a constant variable in C++?",
+    "options": [
+      "const type variableName;",
+      "type const variableName;",
+      "constant type variableName;",
+      "type variableName = const;"
+    ],
+    "correct_option": "const type variableName;"
+  },
+  {
+    "question": "What is the purpose of the `final` keyword in C++?",
+    "options": [
+      "To prevent further inheritance or override of a virtual function",
+      "To create a new class",
+      "To define a constant variable",
+      "None of the above"
+    ],
+    "correct_option": "To prevent further inheritance or override of a virtual function"
+  },
+  {
+    "question": "How do you use the `static` keyword for data members?",
+    "options": [
+      "To ensure only one instance of the variable exists across all objects",
+      "To declare a variable as constant",
+      "To define a variable in a specific scope",
+      "None of the above"
+    ],
+    "correct_option": "To ensure only one instance of the variable exists across all objects"
+  },
+  {
+    "question": "What is the purpose of the `namespace` keyword?",
+    "options": [
+      "To organize code into logical groups and avoid name conflicts",
+      "To define a new class",
+      "To handle exceptions",
+      "To declare a new variable"
+    ],
+    "correct_option": "To organize code into logical groups and avoid name conflicts"
+  },
+  {
+    "question": "How do you define a class member function outside the class?",
+    "options": [
+      "returnType ClassName::functionName(parameters) { body }",
+      "ClassName::functionName(parameters) { body }",
+      "functionName(parameters) { body }",
+      "returnType functionName(parameters) { body }"
+    ],
+    "correct_option": "returnType ClassName::functionName(parameters) { body }"
+  },
+  {
+    "question": "What is the output of `cout << (7 << 2);`?",
+    "options": [
+      "28",
+      "7",
+      "14",
+      "2"
+    ],
+    "correct_option": "28"
+  }
+]

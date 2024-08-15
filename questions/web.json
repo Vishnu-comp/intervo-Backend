@@ -1,0 +1,862 @@
+[
+  {
+    "question": "What does HTML stand for?",
+    "options": [
+      "HyperText Markup Language",
+      "Hyperlink and Text Markup Language",
+      "HyperText and Multimedia Language",
+      "Hypertextual Markup Language"
+    ],
+    "correct_option": "HyperText Markup Language"
+  },
+  {
+    "question": "Which HTML tag is used to define an internal style sheet?",
+    "options": [
+      "<style>",
+      "<css>",
+      "<script>",
+      "<link>"
+    ],
+    "correct_option": "<style>"
+  },
+  {
+    "question": "What is the correct HTML element for inserting a line break?",
+    "options": [
+      "<break>",
+      "<lb>",
+      "<br>",
+      "<line>"
+    ],
+    "correct_option": "<br>"
+  },
+  {
+    "question": "Which CSS property controls the text size?",
+    "options": [
+      "font-size",
+      "text-size",
+      "font-style",
+      "text-style"
+    ],
+    "correct_option": "font-size"
+  },
+  {
+    "question": "How do you create a hyperlink in HTML?",
+    "options": [
+      "<a href='url'>",
+      "<link href='url'>",
+      "<hyperlink href='url'>",
+      "<url link='url'>"
+    ],
+    "correct_option": "<a href='url'>"
+  },
+  {
+    "question": "Which CSS property is used to change the background color?",
+    "options": [
+      "background-color",
+      "color",
+      "bgcolor",
+      "background"
+    ],
+    "correct_option": "background-color"
+  },
+  {
+    "question": "How do you add a comment in CSS?",
+    "options": [
+      "/* comment */",
+      "// comment",
+      "<!-- comment -->",
+      "# comment"
+    ],
+    "correct_option": "/* comment */"
+  },
+  {
+    "question": "What does CSS stand for?",
+    "options": [
+      "Cascading Style Sheets",
+      "Computer Style Sheets",
+      "Creative Style Sheets",
+      "Cascading Script Sheets"
+    ],
+    "correct_option": "Cascading Style Sheets"
+  },
+  {
+    "question": "How do you include JavaScript in an HTML file?",
+    "options": [
+      "<script src='script.js'>",
+      "<js src='script.js'>",
+      "<include src='script.js'>",
+      "<link src='script.js'>"
+    ],
+    "correct_option": "<script src='script.js'>"
+  },
+  {
+    "question": "Which HTML tag is used to define an unordered list?",
+    "options": [
+      "<ul>",
+      "<ol>",
+      "<li>",
+      "<list>"
+    ],
+    "correct_option": "<ul>"
+  },
+  {
+    "question": "How do you set the color of text in CSS?",
+    "options": [
+      "color: value;",
+      "text-color: value;",
+      "background-color: value;",
+      "font-color: value;"
+    ],
+    "correct_option": "color: value;"
+  },
+  {
+    "question": "What is the purpose of the `alt` attribute in the `<img>` tag?",
+    "options": [
+      "To provide alternative text for the image",
+      "To set the image size",
+      "To provide a link to the image",
+      "To style the image"
+    ],
+    "correct_option": "To provide alternative text for the image"
+  },
+  {
+    "question": "Which CSS property is used to change the font of an element?",
+    "options": [
+      "font-family",
+      "font-style",
+      "font-size",
+      "text-font"
+    ],
+    "correct_option": "font-family"
+  },
+  {
+    "question": "How do you select an element with a specific ID in CSS?",
+    "options": [
+      "#idName",
+      ".idName",
+      "idName",
+      "*idName"
+    ],
+    "correct_option": "#idName"
+  },
+  {
+    "question": "Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?",
+    "options": [
+      "alt",
+      "title",
+      "src",
+      "href"
+    ],
+    "correct_option": "alt"
+  },
+  {
+    "question": "How do you define a class selector in CSS?",
+    "options": [
+      ".className",
+      "#className",
+      "className",
+      "*className"
+    ],
+    "correct_option": ".className"
+  },
+  {
+    "question": "What does the `document.getElementById()` method do in JavaScript?",
+    "options": [
+      "Returns the element that has the ID attribute with the specified value",
+      "Returns the element by its tag name",
+      "Returns the element by its class name",
+      "Returns the first element in the document"
+    ],
+    "correct_option": "Returns the element that has the ID attribute with the specified value"
+  },
+  {
+    "question": "Which property is used to change the text color in CSS?",
+    "options": [
+      "color",
+      "font-color",
+      "text-color",
+      "background-color"
+    ],
+    "correct_option": "color"
+  },
+  {
+    "question": "How do you center a block element in CSS?",
+    "options": [
+      "margin: auto;",
+      "text-align: center;",
+      "align: center;",
+      "center: true;"
+    ],
+    "correct_option": "margin: auto;"
+  },
+  {
+    "question": "What does the `event.preventDefault()` method do in JavaScript?",
+    "options": [
+      "Stops the default action of an event from occurring",
+      "Starts the default action of an event",
+      "Prevents the event from bubbling up",
+      "Resets the event"
+    ],
+    "correct_option": "Stops the default action of an event from occurring"
+  },
+  {
+    "question": "Which HTML tag is used to define a table row?",
+    "options": [
+      "<tr>",
+      "<td>",
+      "<th>",
+      "<table>"
+    ],
+    "correct_option": "<tr>"
+  },
+  {
+    "question": "What is the purpose of the `z-index` property in CSS?",
+    "options": [
+      "To specify the stack order of elements",
+      "To set the font size",
+      "To define the border width",
+      "To change the element's position"
+    ],
+    "correct_option": "To specify the stack order of elements"
+  },
+  {
+    "question": "Which JavaScript method is used to add an element to the end of an array?",
+    "options": [
+      "push()",
+      "pop()",
+      "shift()",
+      "unshift()"
+    ],
+    "correct_option": "push()"
+  },
+  {
+    "question": "What is the correct syntax to link an external CSS file to an HTML document?",
+    "options": [
+      "<link rel='stylesheet' href='styles.css'>",
+      "<css src='styles.css'>",
+      "<style src='styles.css'>",
+      "<import href='styles.css'>"
+    ],
+    "correct_option": "<link rel='stylesheet' href='styles.css'>"
+  },
+  {
+    "question": "How do you define a variable in JavaScript?",
+    "options": [
+      "var variableName;",
+      "let variableName;",
+      "const variableName;",
+      "All of the above"
+    ],
+    "correct_option": "All of the above"
+  },
+  {
+    "question": "What does the `innerHTML` property do in JavaScript?",
+    "options": [
+      "Sets or returns the HTML content inside an element",
+      "Sets or returns the CSS content inside an element",
+      "Sets or returns the text content of an element",
+      "Sets or returns the attributes of an element"
+    ],
+    "correct_option": "Sets or returns the HTML content inside an element"
+  },
+  {
+    "question": "Which HTML tag is used to define a form?",
+    "options": [
+      "<form>",
+      "<input>",
+      "<button>",
+      "<fieldset>"
+    ],
+    "correct_option": "<form>"
+  },
+  {
+    "question": "How do you hide an element in CSS?",
+    "options": [
+      "display: none;",
+      "visibility: hidden;",
+      "opacity: 0;",
+      "All of the above"
+    ],
+    "correct_option": "All of the above"
+  },
+  {
+    "question": "What does the `console.log()` function do in JavaScript?",
+    "options": [
+      "Outputs a message to the web console",
+      "Displays an alert box",
+      "Writes a message to the document",
+      "Logs a message to the server"
+    ],
+    "correct_option": "Outputs a message to the web console"
+  },
+  {
+    "question": "Which CSS property is used to set the spacing between lines of text?",
+    "options": [
+      "line-height",
+      "text-spacing",
+      "letter-spacing",
+      "word-spacing"
+    ],
+    "correct_option": "line-height"
+  },
+  {
+    "question": "How do you create a new HTML element using JavaScript?",
+    "options": [
+      "document.createElement('tagName')",
+      "document.newElement('tagName')",
+      "document.addElement('tagName')",
+      "document.makeElement('tagName')"
+    ],
+    "correct_option": "document.createElement('tagName')"
+  },
+  {
+    "question": "What is the purpose of the `class` attribute in HTML?",
+    "options": [
+      "To define the CSS class of an element",
+      "To define the JavaScript class of an element",
+      "To specify the HTML version of an element",
+      "To set the id of an element"
+    ],
+    "correct_option": "To define the CSS class of an element"
+  },
+  {
+    "question": "Which CSS property is used to add space inside an element?",
+    "options": [
+      "padding",
+      "margin",
+      "border",
+      "spacing"
+    ],
+    "correct_option": "padding"
+  },
+  {
+    "question": "What is the output of `console.log(2 + '2');` in JavaScript?",
+    "options": [
+      "22",
+      "4",
+      "Error",
+      "NaN"
+    ],
+    "correct_option": "22"
+  },
+  {
+    "question": "How do you select all `<p>` elements inside a `<div>` in CSS?",
+    "options": [
+      "div p",
+      "div > p",
+      "div+p",
+      "div p()"
+    ],
+    "correct_option": "div p"
+  },
+  {
+    "question": "What does the `float` property do in CSS?",
+    "options": [
+      "Specifies how an element should float",
+      "Controls the position of an element",
+      "Changes the font of an element",
+      "Sets the size of an element"
+    ],
+    "correct_option": "Specifies how an element should float"
+  },
+  {
+    "question": "Which method is used to remove the last element from an array in JavaScript?",
+    "options": [
+      "pop()",
+      "shift()",
+      "splice()",
+      "slice()"
+    ],
+    "correct_option": "pop()"
+  },
+  {
+    "question": "How do you make text bold in HTML?",
+    "options": [
+      "<b>text</b>",
+      "<strong>text</strong>",
+      "<bold>text</bold>",
+      "<text bold>text</text>"
+    ],
+    "correct_option": "<b>text</b>"
+  },
+  {
+    "question": "Which CSS property is used to control the width of an element's border?",
+    "options": [
+      "border-width",
+      "border-style",
+      "border-color",
+      "border-size"
+    ],
+    "correct_option": "border-width"
+  },
+  {
+    "question": "How do you check if a form has been submitted in JavaScript?",
+    "options": [
+      "Using `onsubmit` event",
+      "Using `submit()` method",
+      "Using `form.submit` property",
+      "Using `form.onSubmit` property"
+    ],
+    "correct_option": "Using `onsubmit` event"
+  },
+  {
+    "question": "Which HTML tag is used to define a list item?",
+    "options": [
+      "<li>",
+      "<list>",
+      "<item>",
+      "<ul>"
+    ],
+    "correct_option": "<li>"
+  },
+  {
+    "question": "What is the purpose of the `display` property in CSS?",
+    "options": [
+      "To define how an element is displayed",
+      "To set the background color of an element",
+      "To set the font size of an element",
+      "To add margin to an element"
+    ],
+    "correct_option": "To define how an element is displayed"
+  },
+  {
+    "question": "Which method is used to add a new item to the beginning of an array in JavaScript?",
+    "options": [
+      "unshift()",
+      "push()",
+      "shift()",
+      "pop()"
+    ],
+    "correct_option": "unshift()"
+  },
+  {
+    "question": "What does the `event.target` property represent in JavaScript?",
+    "options": [
+      "The element that triggered the event",
+      "The type of the event",
+      "The position of the event",
+      "The time of the event"
+    ],
+    "correct_option": "The element that triggered the event"
+  },
+  {
+    "question": "How do you make a list ordered in HTML?",
+    "options": [
+      "<ol>",
+      "<ul>",
+      "<list>",
+      "<dl>"
+    ],
+    "correct_option": "<ol>"
+  },
+  {
+    "question": "Which CSS property is used to set the font style?",
+    "options": [
+      "font-style",
+      "font-weight",
+      "font-size",
+      "text-style"
+    ],
+    "correct_option": "font-style"
+  },
+  {
+    "question": "How do you add an external JavaScript file to an HTML document?",
+    "options": [
+      "<script src='file.js'>",
+      "<js src='file.js'>",
+      "<script file='file.js'>",
+      "<link src='file.js'>"
+    ],
+    "correct_option": "<script src='file.js'>"
+  },
+  {
+    "question": "Which HTML tag is used to define the header section of a document?",
+    "options": [
+      "<header>",
+      "<head>",
+      "<h1>",
+      "<section>"
+    ],
+    "correct_option": "<header>"
+  },
+  {
+    "question": "What does the `box-shadow` property do in CSS?",
+    "options": [
+      "Adds shadow effects around an element's frame",
+      "Changes the border style of an element",
+      "Sets the color of the element",
+      "Adjusts the margin of the element"
+    ],
+    "correct_option": "Adds shadow effects around an element's frame"
+  },
+  {
+    "question": "Which JavaScript method is used to find an element by its class name?",
+    "options": [
+      "getElementsByClassName()",
+      "getElementByClassName()",
+      "querySelector()",
+      "findElement()"
+    ],
+    "correct_option": "getElementsByClassName()"
+  },
+  {
+    "question": "How do you apply a style to multiple elements using CSS?",
+    "options": [
+      "Separate selectors with commas",
+      "Use a single class name",
+      "Apply inline styles",
+      "Use the `all` selector"
+    ],
+    "correct_option": "Separate selectors with commas"
+  },
+  {
+    "question": "What is the purpose of the `this` keyword in JavaScript?",
+    "options": [
+      "Refers to the current object",
+      "Refers to the parent object",
+      "Refers to the previous object",
+      "Refers to the next object"
+    ],
+    "correct_option": "Refers to the current object"
+  },
+  {
+    "question": "Which CSS property controls the visibility of an element?",
+    "options": [
+      "visibility",
+      "display",
+      "opacity",
+      "position"
+    ],
+    "correct_option": "visibility"
+  },
+  {
+    "question": "How do you access the value of a form input in JavaScript?",
+    "options": [
+      "element.value",
+      "element.inputValue",
+      "element.getValue()",
+      "element.getAttribute('value')"
+    ],
+    "correct_option": "element.value"
+  },
+  {
+    "question": "Which HTML element is used to display a multimedia content?",
+    "options": [
+      "<video>",
+      "<audio>",
+      "<media>",
+      "<embed>"
+    ],
+    "correct_option": "<video>"
+  },
+  {
+    "question": "What does the `flex` property do in CSS?",
+    "options": [
+      "Defines how a flex item will grow or shrink to fit the space",
+      "Sets the size of the element",
+      "Aligns the text in the element",
+      "Defines the border of the element"
+    ],
+    "correct_option": "Defines how a flex item will grow or shrink to fit the space"
+  },
+  {
+    "question": "How do you create a dropdown list in HTML?",
+    "options": [
+      "<select> and <option>",
+      "<dropdown> and <option>",
+      "<list> and <item>",
+      "<input> and <option>"
+    ],
+    "correct_option": "<select> and <option>"
+  },
+  {
+    "question": "Which JavaScript method is used to remove an element from the beginning of an array?",
+    "options": [
+      "shift()",
+      "pop()",
+      "splice()",
+      "slice()"
+    ],
+    "correct_option": "shift()"
+  },
+  {
+    "question": "What is the default value of the `display` property in CSS for a `<div>` element?",
+    "options": [
+      "block",
+      "inline",
+      "inline-block",
+      "none"
+    ],
+    "correct_option": "block"
+  },
+  {
+    "question": "Which HTML tag is used to define a table header?",
+    "options": [
+      "<th>",
+      "<header>",
+      "<td>",
+      "<tr>"
+    ],
+    "correct_option": "<th>"
+  },
+  {
+    "question": "What does the `opacity` property do in CSS?",
+    "options": [
+      "Sets the transparency level of an element",
+      "Controls the color of an element",
+      "Sets the border width",
+      "Defines the font size"
+    ],
+    "correct_option": "Sets the transparency level of an element"
+  },
+  {
+    "question": "How do you update the content of an HTML element using JavaScript?",
+    "options": [
+      "element.innerHTML = 'new content';",
+      "element.textContent = 'new content';",
+      "element.content = 'new content';",
+      "element.update('new content');"
+    ],
+    "correct_option": "element.innerHTML = 'new content';"
+  },
+  {
+    "question": "What does the `text-align` property do in CSS?",
+    "options": [
+      "Aligns the text inside an element",
+      "Sets the size of the text",
+      "Changes the color of the text",
+      "Adjusts the spacing between letters"
+    ],
+    "correct_option": "Aligns the text inside an element"
+  },
+  {
+    "question": "Which HTML tag is used to define a list of links?",
+    "options": [
+      "<nav>",
+      "<ul>",
+      "<ol>",
+      "<link>"
+    ],
+    "correct_option": "<nav>"
+  },
+  {
+    "question": "What is the correct syntax for adding a comment in JavaScript?",
+    "options": [
+      "// comment",
+      "/* comment */",
+      "<!-- comment -->",
+      "# comment"
+    ],
+    "correct_option": "// comment"
+  },
+  {
+    "question": "Which CSS property controls the visibility of an element?",
+    "options": [
+      "visibility",
+      "display",
+      "opacity",
+      "position"
+    ],
+    "correct_option": "visibility"
+  },
+  {
+    "question": "How do you define a function in JavaScript?",
+    "options": [
+      "function name() { }",
+      "define name() { }",
+      "func name() { }",
+      "method name() { }"
+    ],
+    "correct_option": "function name() { }"
+  },
+  {
+    "question": "What does the `return` statement do in JavaScript?",
+    "options": [
+      "Exits a function and optionally returns a value",
+      "Continues the execution of a function",
+      "Starts a new function",
+      "Returns the value of the variable"
+    ],
+    "correct_option": "Exits a function and optionally returns a value"
+  },
+  {
+    "question": "How do you select an element by its ID in JavaScript?",
+    "options": [
+      "document.getElementById('id')",
+      "document.querySelector('#id')",
+      "document.select('#id')",
+      "document.getId('id')"
+    ],
+    "correct_option": "document.getElementById('id')"
+  },
+  {
+    "question": "Which CSS property controls the size of the font?",
+    "options": [
+      "font-size",
+      "text-size",
+      "font-style",
+      "text-style"
+    ],
+    "correct_option": "font-size"
+  },
+  {
+    "question": "How do you make an element visible again after using `display: none;` in CSS?",
+    "options": [
+      "Change the display property to a value like `block`",
+      "Set visibility to `visible`",
+      "Set opacity to `1`",
+      "Change the position property"
+    ],
+    "correct_option": "Change the display property to a value like `block`"
+  },
+  {
+    "question": "What is the purpose of the `classList` property in JavaScript?",
+    "options": [
+      "To get the list of classes for an element",
+      "To set the ID of an element",
+      "To remove the element from the DOM",
+      "To add new HTML elements"
+    ],
+    "correct_option": "To get the list of classes for an element"
+  },
+  {
+    "question": "Which HTML tag is used to define a section in a document?",
+    "options": [
+      "<section>",
+      "<article>",
+      "<div>",
+      "<header>"
+    ],
+    "correct_option": "<section>"
+  },
+  {
+    "question": "How do you align text to the center of a container in CSS?",
+    "options": [
+      "text-align: center;",
+      "align: center;",
+      "margin: auto;",
+      "center-align: true;"
+    ],
+    "correct_option": "text-align: center;"
+  },
+  {
+    "question": "Which JavaScript method is used to find the index of a value in an array?",
+    "options": [
+      "indexOf()",
+      "findIndex()",
+      "searchIndex()",
+      "getIndex()"
+    ],
+    "correct_option": "indexOf()"
+  },
+  {
+    "question": "How do you define a CSS grid layout?",
+    "options": [
+      "display: grid;",
+      "layout: grid;",
+      "grid-layout: true;",
+      "grid: true;"
+    ],
+    "correct_option": "display: grid;"
+  },
+  {
+    "question": "Which HTML attribute is used to specify the URL of an image?",
+    "options": [
+      "src",
+      "href",
+      "url",
+      "alt"
+    ],
+    "correct_option": "src"
+  },
+  {
+    "question": "What does the `border-radius` property do in CSS?",
+    "options": [
+      "Rounds the corners of an element",
+      "Sets the border width",
+      "Adds a border shadow",
+      "Changes the border color"
+    ],
+    "correct_option": "Rounds the corners of an element"
+  },
+  {
+    "question": "How do you make a JavaScript function execute automatically after a page loads?",
+    "options": [
+      "Use `window.onload`",
+      "Call the function directly",
+      "Use `document.ready`",
+      "Include the function in `<script>` tag"
+    ],
+    "correct_option": "Use `window.onload`"
+  },
+  {
+    "question": "Which CSS property sets the space between the border and the content of an element?",
+    "options": [
+      "padding",
+      "margin",
+      "border-spacing",
+      "border-width"
+    ],
+    "correct_option": "padding"
+  },
+  {
+    "question": "How do you apply a style to a specific element using JavaScript?",
+    "options": [
+      "element.style.property = 'value';",
+      "element.setStyle('property', 'value');",
+      "element.addStyle('property', 'value');",
+      "element.setProperty('property', 'value');"
+    ],
+    "correct_option": "element.style.property = 'value';"
+  },
+  {
+    "question": "Which HTML element defines an interactive button?",
+    "options": [
+      "<button>",
+      "<input type='button'>",
+      "<submit>",
+      "<action>"
+    ],
+    "correct_option": "<button>"
+  },
+  {
+    "question": "How do you make an element position absolute in CSS?",
+    "options": [
+      "position: absolute;",
+      "position: fixed;",
+      "position: relative;",
+      "position: static;"
+    ],
+    "correct_option": "position: absolute;"
+  },
+  {
+    "question": "Which method is used to remove an element from an array in JavaScript?",
+    "options": [
+      "splice()",
+      "pop()",
+      "shift()",
+      "slice()"
+    ],
+    "correct_option": "splice()"
+  },
+  {
+    "question": "What is the default display value for `<span>` elements?",
+    "options": [
+      "inline",
+      "block",
+      "inline-block",
+      "none"
+    ],
+    "correct_option": "inline"
+  },
+  {
+    "question": "How do you access the value of a form input in JavaScript?",
+    "options": [
+      "element.value",
+      "element.inputValue",
+      "element.getValue()",
+      "element.getAttribute('value')"
+    ],
+    "correct_option": "element.value"
+  }
+]

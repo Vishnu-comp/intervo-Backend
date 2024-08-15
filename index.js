@@ -14,6 +14,7 @@ import userLogin from './routes/userLogin.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import path from 'path';
+import questionRoutes from './routes/questions.js';
 dotenv.config();
 connectDB();
 
@@ -35,6 +36,7 @@ app.use('/api', getInterviewBatchRoutes);
 app.use('/api', sendEmailsRoute);
 app.use('/api', storeCandidatesRoute);
 app.use('/candidate', userLogin);
+app.use('/api/questions', questionRoutes);
 
 // Aarav's routes
 app.use('/meeting', meetingRouter);
