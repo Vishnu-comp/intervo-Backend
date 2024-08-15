@@ -90,11 +90,28 @@ function csvToCandidateArray(filePath) {
       const lines = data.split('\n').filter(line => line.trim() !== '');
       const headers = lines[0].split(',');
 
+      // Find the index of the "email" column
+      const emailIndex = headers.findIndex(header => header.trim().toLowerCase() === 'email');
+
+      if (emailIndex === -1) {
+        return reject(new Error('No "email" column found in CSV file.'));
+      }
+
       const result = lines.slice(1).map(line => {
         const values = line.split(',');
-        const email = values[1] ? values[1].trim() : null; 
-        return { email, testScore: 0, interviewScore: 0, time: null };
-      });
+
+        // If the line doesn't have the expected number of columns, skip it
+        if (values.length <= emailIndex) {
+          return null;
+        }
+
+        return {
+          email: values[emailIndex] ? values[emailIndex].trim() : null,
+          testScore: 0,
+          interviewScore: 0,
+          time: null
+        };
+      }).filter(entry => entry !== null); // Filter out any null entries
 
       resolve(JSON.stringify(result, null, 2));
     });
