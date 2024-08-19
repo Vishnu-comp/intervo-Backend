@@ -53,6 +53,7 @@
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
+import TestResult from '../models/TestResult.js';
 import { fileURLToPath } from 'url';
 
 const router = express.Router();
@@ -98,6 +99,45 @@ router.get('/random20', (req, res) => {
     res.json(numberedQuestions);
   } catch (err) {
     res.status(500).json({ message: err.message });
+  }
+});
+
+
+//test results
+router.post('/test-results', async (req, res) => {
+  try {
+    const {
+      userId, // Identify the user (if logged in)
+      correctAnswersCount,
+      wrongAnswersCount,
+      marksScored,
+      questionsAttempted,
+      percentage,
+      timeTaken,
+      startedAt,
+      endedAt
+    } = req.body;
+
+    // Save the test results to your database
+    // Example: using a MongoDB model called TestResult
+    const testResult = new TestResult({
+      userId,
+      correctAnswersCount,
+      wrongAnswersCount,
+      marksScored,
+      questionsAttempted,
+      percentage,
+      timeTaken,
+      startedAt,
+      endedAt,
+    });
+
+    await testResult.save();
+
+    res.status(201).json({ message: 'Test results saved successfully.' });
+  } catch (error) {
+    console.error('Error saving test results:', error);
+    res.status(500).json({ message: 'Error saving test results.' });
   }
 });
 

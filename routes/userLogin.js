@@ -2,6 +2,8 @@ import express from 'express';
 import Candidate from '../models/Candidate.js';
 import jwt from 'jsonwebtoken';
 import multer from 'multer';
+import InterviewBatch from '../models/InterviewBatch.js'
+import Interviewer from '../models/Interviewer.js'
 import AptitudeUser from '../models/AptitudeUser.js';
 import CandidateMiddleware from '../middleware/CandidateMiddleware.js';
 import path from 'path';
@@ -29,8 +31,8 @@ router.post('/signin', async (req, res) => {
       return res.status(401).json({ valid: false, message: 'Invalid email or password' });
     }
 
-    // Generate a token
-    const token = jwt.sign({ id: candidate._id }, JWT_SECRET, { expiresIn: '1h' });
+    // Generate a token with email and id
+    const token = jwt.sign({ id: candidate._id, email: candidate.email }, JWT_SECRET, { expiresIn: '1h' });
 
     res.status(200).json({
       valid: true,
@@ -42,7 +44,6 @@ router.post('/signin', async (req, res) => {
     res.status(500).json({ valid: false, message: 'An error occurred during sign-in' });
   }
 });
-
 // Get candidate details
 // Get candidate details
 router.get('/details', CandidateMiddleware, async (req, res) => {
@@ -229,6 +230,87 @@ router.post('/upload-idcard', async (req, res) => {
       res.status(500).send({ message: 'Error uploading ID card image', error });
   }
 });
+
+//fetch interview details including interviwer name
+// Get interview details for the current user
+router.post('/interviewsdetails', async (req, res) => {
+  console.log('Request received for /interviewsdetails with email:', req.body.email);
+  const { email } = req.body;
+
+  try {
+    // Find the interview where the candidate's email is present in the candidates array
+    const interview = await InterviewBatch.findOne({ 'candidates.email': email });
+
+    if (!interview) {
+      console.log('No interview found for email:', email);
+      return res.status(404).json({ message: 'Interview details not found' });
+    }
+
+    console.log('Interview found:', interview);
+
+    let interviewTime;
+    let interviewDay;
+
+    // Extract the schedule by date and find the corresponding interview time and day
+    for (const [day, scheduleForDate] of Object.entries(interview.schedule)) {
+      const scheduleEntry = scheduleForDate.find(s => s.email === email);
+      if (scheduleEntry) {
+        interviewTime = scheduleEntry.time;
+        interviewDay = day;
+        break;
+      }
+    }
+
+    if (!interviewTime) {
+      console.log('No interview time found for email:', email);
+      return res.status(404).json({ message: 'Interview time not found' });
+    }
+
+    console.log('Interview time:', interviewTime, 'Interview day:', interviewDay);
+
+    // Find the interviewer's email from the interviewers object
+    let interviewerEmail;
+    const interviewerEmails = Object.keys(interview.interviewers);
+    for (const email of interviewerEmails) {
+      if (interview.interviewers[email].batchIds.includes(interview.batchId)) {
+        interviewerEmail = email;
+        break;
+      }
+    }
+
+    if (!interviewerEmail) {
+      console.log('No interviewer email found for batch ID:', interview.batchId);
+      return res.status(404).json({ message: 'Interviewer not found' });
+    }
+
+    // Fetch the interviewer details from the Interviewer model using the email
+    const interviewer = await Interviewer.findOne({ email: interviewerEmail });
+
+    if (!interviewer) {
+      console.log('No interviewer found for email:', interviewerEmail);
+      return res.status(404).json({ message: 'Interviewer not found' });
+    }
+
+    console.log('Interviewer found:', interviewer);
+
+    // Extract the date from the interview time
+    const date = interviewTime.split('T')[0];
+
+    res.status(200).json({
+      date: date,
+      time: interviewTime,
+      day: interviewDay, // Return the day of the week
+      position: interview.domains,
+      type: interview.interviewTypes.join(', '),
+      interviewerName: interviewer.name // Return the interviewer's name
+    });
+  } catch (error) {
+    console.error('Error fetching interview details:', error);
+    res.status(500).json({ message: 'An error occurred while fetching interview details' });
+  }
+});
+
+
 
 
 export default router;
