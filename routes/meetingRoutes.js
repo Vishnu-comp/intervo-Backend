@@ -33,13 +33,13 @@ router.post('/getAuthKey', (req, res) => {
 
 router.post('/getMeetingId', async (req, res) => {
   const {batchId, email} = req.body;
-
+  // console.log("");
   try {
     const batch = await InterviewBatch.findOne({ batchId });
     if (batch.meetingId !== null && batch.meetingId !== "") 
       res.status(200).json({ meetingId: batch.meetingId });
     else 
-      res.status(404).json({ message: 'MeetingId not set' });
+      res.status(200).json({ message: 'MeetingId not set' });
 
   } catch (error) {
     console.log(error);
