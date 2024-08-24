@@ -21,7 +21,7 @@ router.post('/sendOtp', async (req, res) => {
     const otp = String(randomNumber).padStart(6, '0');
 
     const htmlContent = `
-      <div style="font-family: Arial, sans-serif; font-size: 16px; color: #fff;">
+      <div style="font-family: Arial, sans-serif; font-size: 16px;">
         <p>Hello ${name},</p>
         <p>Your Otp to register as an Interviewer on Intervo.</p>
         <p><strong>Email:</strong> ${email}</p>
