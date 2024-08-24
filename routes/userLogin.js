@@ -297,6 +297,7 @@ router.post('/interviewsdetails', async (req, res) => {
     const date = interviewTime.split('T')[0];
 
     res.status(200).json({
+      batchId: interview.batchId,
       date: date,
       time: interviewTime,
       day: interviewDay, // Return the day of the week
