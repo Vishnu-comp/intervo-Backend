@@ -104,34 +104,39 @@ router.get('/random20', (req, res) => {
 
 
 //test results
-router.post('/test-results', async (req, res) => {
+router.post('/submit-results', async (req, res) => {
   try {
-    const {
-      userId, // Identify the user (if logged in)
-      correctAnswersCount,
-      wrongAnswersCount,
-      marksScored,
-      questionsAttempted,
-      percentage,
-      timeTaken,
-      startedAt,
-      endedAt
-    } = req.body;
+    const { userId, correctAnswers, questionsAttempted, timeTaken, startTime, endTime } = req.body;
 
-    // Save the test results to your database
-    // Example: using a MongoDB model called TestResult
+    // Validate and parse dates
+    const startedAtDate = new Date(startTime);
+    const endedAtDate = new Date(endTime);
+
+    if (isNaN(startedAtDate.getTime()) || isNaN(endedAtDate.getTime())) {
+      return res.status(400).json({ message: 'Invalid date format.' });
+    }
+
+    // Validate input
+    if (typeof correctAnswers !== 'number' || typeof questionsAttempted !== 'number' || typeof timeTaken !== 'number') {
+      return res.status(400).json({ message: 'Invalid input: correctAnswers, questionsAttempted, and timeTaken must be numbers.' });
+    }
+
+    const wrongAnswersCount = questionsAttempted - correctAnswers;
+    const percentage = (questionsAttempted > 0) ? (correctAnswers / questionsAttempted) * 100 : 0;
+
+    // Save the test results to the database
     const testResult = new TestResult({
       userId,
-      correctAnswersCount,
+      correctAnswersCount: correctAnswers,
       wrongAnswersCount,
-      marksScored,
+      marksScored: correctAnswers, // Assuming 1 mark per correct answer
       questionsAttempted,
       percentage,
       timeTaken,
-      startedAt,
-      endedAt,
+      startedAt: startedAtDate,
+      endedAt: endedAtDate,
     });
-
+   
     await testResult.save();
 
     res.status(201).json({ message: 'Test results saved successfully.' });
@@ -140,5 +145,7 @@ router.post('/test-results', async (req, res) => {
     res.status(500).json({ message: 'Error saving test results.' });
   }
 });
+
+
 
 export default router;
