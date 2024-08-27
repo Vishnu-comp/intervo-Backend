@@ -1,7 +1,6 @@
 // models/interviewBatch.js
 import mongoose from 'mongoose';
 
-
 const testResultSchema = new mongoose.Schema({
     userId: {
       type: mongoose.Schema.Types.ObjectId,
@@ -39,7 +38,12 @@ const testResultSchema = new mongoose.Schema({
     endedAt: {
       type: Date,
       required: true,
-    }
+    },
+    resultAvailable: {
+      type: Boolean,
+      required: true,
+      default: false, // Set to true when results are available
+    },
   }, { timestamps: true });
   
 

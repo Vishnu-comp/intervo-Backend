@@ -52,6 +52,7 @@
 
 import express from 'express';
 import fs from 'fs';
+import mongoose from 'mongoose';
 import path from 'path';
 import TestResult from '../models/TestResult.js';
 import { fileURLToPath } from 'url';
@@ -135,6 +136,7 @@ router.post('/submit-results', async (req, res) => {
       timeTaken,
       startedAt: startedAtDate,
       endedAt: endedAtDate,
+      resultAvailable: true 
     });
    
     await testResult.save();
@@ -146,6 +148,32 @@ router.post('/submit-results', async (req, res) => {
   }
 });
 
+//fetch test results
+router.post('/test-results', async (req, res) => {
+  try {
+    const { userId } = req.body; // Receiving userId from request body
 
+    if (!userId) {
+      return res.status(400).json({ error: 'User ID is required' });
+    }
+
+    // Ensure userId is a valid ObjectId and convert it
+    const objectId = new mongoose.Types.ObjectId(userId); 
+
+    // Query the TestResult model to find if the result is available
+    const testResult = await TestResult.findOne({ userId: objectId });
+
+    // Respond based on whether the test result is found
+    if (testResult) {
+      return res.status(200).json(testResult);
+    } else {
+      return res.status(404).json({ error: 'Test result not found' });
+    }
+  
+  } catch (error) {
+    console.error('Error checking result status:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 export default router;
