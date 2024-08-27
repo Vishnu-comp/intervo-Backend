@@ -2,11 +2,13 @@ import express from 'express';
 import Candidate from '../models/Candidate.js';
 import jwt from 'jsonwebtoken';
 import multer from 'multer';
+import mongoose from 'mongoose';
 import InterviewBatch from '../models/InterviewBatch.js'
 import Interviewer from '../models/Interviewer.js'
 import AptitudeUser from '../models/AptitudeUser.js';
 import CandidateMiddleware from '../middleware/CandidateMiddleware.js';
 import path from 'path';
+import TestResult from '../models/TestResult.js';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 const router = express.Router();
@@ -311,8 +313,30 @@ router.post('/interviewsdetails', async (req, res) => {
   }
 });
 
+router.post('/result-status', async (req, res) => {
+  try {
+    const { userId } = req.body; // Receiving userId from request body
 
+    if (!userId) {
+      return res.status(400).json({ error: 'User ID is required' });
+    }
 
+    // Convert string to ObjectId
+    const testResult = await TestResult.findOne({
+      userId: new mongoose.Types.ObjectId(userId),
+      resultAvailable: true,
+    });
+
+    if (testResult) {
+      return res.status(200).json({ resultsAvailable: true });
+    } else {
+      return res.status(200).json({ resultsAvailable: false });
+    }
+  } catch (error) {
+    console.error('Error checking result status:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 export default router;
 
