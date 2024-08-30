@@ -55,55 +55,29 @@ router.post('/get-batch', async (req, res) => {
 
   try {
     let batch = await InterviewBatch.findOne({ batchId });
+    const candidates = batch.candidates;
+    // console.log(batch.candidates);
     let interviewer = await Interviewer.findOne({ email });
     const filePath = path.join(__dirname, batch.csvFile);
     const json = await csvToJson(filePath);
     batch = batch.toObject();
     batch.tableData = json;
-    console.log(interviewer);
-
+    
     // Define the interviewer's available days and time slot
     // const availableDays = ['Monday', 'Wednesday', 'Saturday'];
     const timeSlot = `${interviewer.timeFrom}-${interviewer.timeTo}`;
-
-    // Define the list of interviewees with email and score
-    const interviewees = [
-      { "email": "Alice@gmail.com", "score": 50, "time": "" },
-      { "email": "Bob@gmail.com", "score": 60, "time": "" },
-      { "email": "Charlie@gmail.com", "score": 70, "time": "" },
-      { "email": "David@gmail.com", "score": 80, "time": "" },
-      { "email": "Eve@gmail.com", "score": 90, "time": "" },
-      { "email": "Frank@gmail.com", "score": 55, "time": "" },
-      { "email": "Grace@gmail.com", "score": 65, "time": "" },
-      { "email": "Hannah@gmail.com", "score": 75, "time": "" },
-      { "email": "Alice@gmail.com", "score": 50, "time": "" },
-      { "email": "Bob@gmail.com", "score": 60, "time": "" },
-      { "email": "Charlie@gmail.com", "score": 70, "time": "" },
-      { "email": "David@gmail.com", "score": 80, "time": "" },
-      { "email": "Eve@gmail.com", "score": 90, "time": "" },
-      { "email": "Frank@gmail.com", "score": 55, "time": "" },
-      { "email": "Grace@gmail.com", "score": 65, "time": "" },
-      { "email": "Hannah@gmail.com", "score": 75, "time": "" },
-      { "email": "Hannah@gmail.com", "score": 75, "time": "" },
-      { "email": "Alice@gmail.com", "score": 50, "time": "" },
-      { "email": "Bob@gmail.com", "score": 60, "time": "" },
-      { "email": "Charlie@gmail.com", "score": 70, "time": "" },
-      { "email": "David@gmail.com", "score": 80, "time": "" },
-      { "email": "Eve@gmail.com", "score": 90, "time": "" },
-      { "email": "Frank@gmail.com", "score": 55, "time": "" },
-      { "email": "Grace@gmail.com", "score": 65, "time": "" },
-      { "email": "Hannah@gmail.com", "score": 75, "time": "" },
-    ];
-
+    
     // Get the schedule
     const interviewSchedule = scheduleInterviews(interviewer.days, timeSlot, batch.candidates);
-
+    
     // console.log(JSON.stringify(interviewSchedule, null, 2));
     console.log('=================================================================');
-
+    
     batch.schedule = JSON.stringify(interviewSchedule, null, 2);
-    console.log(batch);
-
+    // console.log(batch);
+    
+    batch.candidates = candidates;
+    // console.log(candidates);
     res.status(200).json(batch);
 
   } catch (error) {
@@ -133,6 +107,47 @@ router.post('/accept-batch', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 })
+
+router.post('/save-ratings', async (req, res) => {
+  const { batchId, email, techSkill, softSkill, culturalFit, analyticalSkill, note } = req.body;
+
+  try {
+    // Find the batch with the given batchId
+    console.log("ASRTGVH");
+    let batch = await InterviewBatch.findOne({ batchId });
+
+    if (!batch) {
+      return res.status(404).send({ error: 'Batch not found' });
+    }
+
+    // Find the candidate with the given email
+    let candidate = batch.candidates.find(candidate => candidate.email === email);
+
+    if (!candidate) {
+      return res.status(404).send({ error: 'Candidate not found' });
+    }
+
+    // Update the interviewScore for the found candidate
+    candidate.interviewScore = {
+      techSkill,
+      softSkill,
+      culturalFit,
+      analyticalSkill,
+      note
+    };  
+
+    // Save the updated batch document
+    await batch.save();
+
+    console.log("QWERTY");  
+    res.status(200).send({ message: 'Ratings saved successfully' });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error: 'Internal Server Error' });
+  }
+});
+
 
 
 // Function to add minutes to a time string
