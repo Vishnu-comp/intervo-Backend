@@ -1,4 +1,3 @@
-// routes/interviewBatchRoutes.js
 import express from 'express';
 import multer from 'multer';
 import { fileURLToPath } from 'url';
@@ -80,6 +79,20 @@ router.get('/getCSVFile/:filename', (req, res) => {
   res.sendFile(filePath);
 });
 
+// Get candidate scores
+router.get('/getScores/:batchId', async (req, res) => {
+  try {
+    const interviewBatch = await InterviewBatch.findOne({ batchId: req.params.batchId });
+    if (!interviewBatch) {
+      return res.status(404).json({ message: 'Batch not found' });
+    }
+    res.json(interviewBatch.candidates);
+  } catch (error) {
+    console.error('Error fetching candidate scores:', error);
+    res.status(500).json({ message: 'Error fetching candidate scores' });
+  }
+});
+
 function csvToCandidateArray(filePath) {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, 'utf8', (err, data) => {
@@ -90,30 +103,16 @@ function csvToCandidateArray(filePath) {
       const lines = data.split('\n').filter(line => line.trim() !== '');
       const headers = lines[0].split(',');
 
-      // Find the index of the "email" column
-      const emailIndex = headers.findIndex(header => header.trim().toLowerCase() === 'email');
-
-      if (emailIndex === -1) {
-        return reject(new Error('No "email" column found in CSV file.'));
-      }
-
-      const result = lines.slice(1).map(line => {
+      const candidates = lines.slice(1).map(line => {
         const values = line.split(',');
+        let candidate = {};
+        headers.forEach((header, index) => {
+          candidate[header] = values[index];
+        });
+        return candidate;
+      });
 
-        // If the line doesn't have the expected number of columns, skip it
-        if (values.length <= emailIndex) {
-          return null;
-        }
-
-        return {
-          email: values[emailIndex] ? values[emailIndex].trim() : null,
-          testScore: 0,
-          interviewScore: 0,
-          time: null
-        };
-      }).filter(entry => entry !== null); // Filter out any null entries
-
-      resolve(JSON.stringify(result, null, 2));
+      resolve(JSON.stringify(candidates));
     });
   });
 }
