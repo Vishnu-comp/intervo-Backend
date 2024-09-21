@@ -1,3 +1,4 @@
+# Company Side
 ![image](https://github.com/user-attachments/assets/12eb3605-befd-48a5-b2f7-f48f14da5bf8)
 
 ![image](https://github.com/user-attachments/assets/d64c04ba-8429-439b-ae19-fe38a6e69622)
@@ -23,7 +24,7 @@
 
 
 
---interviwer
+# Interviwer Side
 ![image](https://github.com/user-attachments/assets/d1fc2475-1b24-4c14-a5f3-2aca7b62884c)
 
 ![image](https://github.com/user-attachments/assets/ba7cd5f0-af2f-40cf-add8-4065bc396305)
@@ -43,6 +44,25 @@
 
 
 ![image](https://github.com/user-attachments/assets/e743f79e-725f-4a5a-a244-d406de54811d)
+
+
+# Candidate Side
+![image](https://github.com/user-attachments/assets/d5fb317e-df0e-4d74-ba8f-acebe2e385c5)
+
+
+![image](https://github.com/user-attachments/assets/4f41f2ef-27d7-40d6-b0ce-b4d5d8cc729e)
+
+![image](https://github.com/user-attachments/assets/a458db11-3791-4363-b20b-783d52b14f7f)
+
+![image](https://github.com/user-attachments/assets/39814d5b-db98-4d8d-8288-810839dda36d)
+
+
+
+![image](https://github.com/user-attachments/assets/65c3fe03-5d39-46c8-b01c-35d5f9d3281f)
+
+![image](https://github.com/user-attachments/assets/6637d72f-1504-4dcd-a927-30cf4d4ca7cf)
+
+
 
 
 
