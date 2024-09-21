@@ -1,3 +1,10 @@
+# INTERVO
+
+Simplify Hiring, Amplify Talent. <br />
+Christ University MCA Specialization Project. <br />
+Intervo-frontend: [https://github.com/Vishnu-comp/intervo-backend](https://github.com/aaravdubey/intervo-frontend)
+
+
 # Company Side
 ![image](https://github.com/user-attachments/assets/12eb3605-befd-48a5-b2f7-f48f14da5bf8)
 
